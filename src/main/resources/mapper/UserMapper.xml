@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shoppingmall.example.mapper.UserMapper">
+	 <!-- 권한 읽기 -->
+    <select id="readAuthorities" parameterType="String" resultType="org.springframework.security.core.authority.SimpleGrantedAuthority">
+    	SELECT			user_auth
+    	FROM			userauth
+    	WHERE 			1=1
+    	AND				user_id = #{username}
+    </select>
+
+
+	<!-- 로그인 시 사용자 조회 -->
+	<select id="getUser" parameterType="UserInfo" resultType="UserInfo">
+		SELECT        user_id                  as username,
+					  user_name                as name
+		FROM		  user
+		WHERE         user_id  = #{username}
+	</select>
+
+
+
+	<!-- 테스트 메서드 (회원 불러오기) -->
+	<select id="readUser" parameterType="String" resultType="User">
+		SELECT			user_id									as 	username,
+						user_password 							as 	password,
+						user_name								as	    name,
+						user_phone								as		phone,
+						user_email                              as      email,   
+						user_isAccountNonExpired 				as 	isAccountNonExpired,
+		        		user_isAccountNonLocked 				as 	isAccountNonLocked,
+		        		user_isCredentialNonExpired 			as 	isCredentialsNonExpired,
+		        		user_isEnabled 							as 	isEnabled
+		FROM			user
+		WHERE			1=1
+		AND				user_id	=	#{username}
+	</select>
+	
+	
+	
+	<!-- 테스트 메서드 (회원정보 수정하기) -->
+	<update id="updateUser" parameterType="UserInfo">
+		update			user								set
+						user_id = #{new_username},
+						user_password = #{password},
+						user_name = #{name},
+						user_address = #{address},
+						user_phone = #{phone},
+						user_email = #{email},
+						user_point = #{point}
+						
+						where user_id= #{temp}
+		
+	</update>
+
+	<!-- 테스트 메서드 (회원목록 불러오기) -->
+	<select id="shopping_readUser" parameterType="String" resultType="UserInfo">
+		SELECT			user_id											as 	username,
+						user_password 		  							as 	password,
+						user_name										as	    name,
+						user_address          		                    as      address,
+						user_phone										as		phone,
+						user_email                   		            as      email,
+						user_point                      	            as      point
+		FROM			user
+	</select>
+	
+	<!-- 회원탈퇴 -->
+	<delete id="delete_user" parameterType="String">
+		DELETE 			FROM 		user 
+						WHERE 		user_id = #{username}
+	</delete>
+	
+	<!-- 회원 불러오기(새로고침) -->
+	<select id="readUser_refresh" parameterType="String" resultType="UserInfo">
+		SELECT			user_id											as 	username,
+						user_name				   						as	    name,
+						user_phone										as		phone
+		FROM			user
+		WHERE			1=1
+		AND				user_id	=	#{username}
+	</select>
+	<!-- 권한 읽기(새로고침) -->
+    <select id="readAuthorities_refresh" parameterType="String" resultType="org.springframework.security.core.authority.SimpleGrantedAuthority">
+    	SELECT			user_auth
+    	FROM			userauth
+    	WHERE 			1=1
+    	AND				user_id = #{username}
+    </select>
+    
+	<!-- 회원 등록 -->
+	<insert id="createUser" parameterType="User">
+		INSERT INTO user (
+			user_id,
+			user_password,
+			user_name,
+			user_phone,
+			user_email,
+			user_address,
+			user_isAccountNonExpired,
+			user_isAccountNonLocked,
+			user_isCredentialNonExpired,
+			user_isEnabled
+		) VALUES (
+			#{username},
+			#{password},
+			#{name},
+			#{phone},
+			#{email},
+			#{address},
+			#{isAccountNonExpired},
+			#{isAccountNonLocked},
+			#{isCredentialsNonExpired},
+			#{isEnabled}
+		)
+	</insert>	
+	
+	
+	<!-- 중복검사 -->
+	<select id="duplicate" parameterType="User" resultType="User">
+		SELECT		 user_id username
+		FROM         user
+		WHERE        user_id = #{username}
+	</select>
+	
+	
+	<!-- 회원 목록 불러오기(admin) -->
+    <select id="read_user_list"  resultType="UserInfo">
+    	SELECT		ta.u_id					username,
+    						ta.u_name			name,
+    						ta.u_phone			phone,
+							tb.u_auth			auth
+		FROM			userlist ta
+		LEFT join	  (
+								SELECT		ta.u_id,
+													GROUP_CONCAT(ta.u_auth SEPARATOR ",") u_auth
+								FROM			userauth ta
+								GROUP BY		ta.u_id
+					  ) tb ON ta.u_id = tb.u_id
+	</select>
+	 <!-- 유저 권한 추가 -->
+    <insert id="createAuthority" parameterType="org.springframework.security.core.GrantedAuthority">
+    	INSERT INTO userauth (
+    		user_id,
+    		user_auth
+    	) VALUES
+   		<foreach item="authority" index="index" collection="authorities" separator=",">
+   			(#{username}, #{authority.role})
+   		</foreach>
+   		ON DUPLICATE KEY
+			UPDATE
+				user_id = #{username}
+    </insert>
+</mapper>
