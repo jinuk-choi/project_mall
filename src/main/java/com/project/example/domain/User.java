@@ -17,7 +17,7 @@ public class User implements UserDetails{
 	private String phone;
 	private String address;
 	private String email;
-	private String point; //일단은 테스트를 위해 int 대신 string으로 사용
+	private String point; 
 	private String uDateTime;
 	private Collection<? extends GrantedAuthority> authorities;
 	private Boolean isAccountNonExpired;
