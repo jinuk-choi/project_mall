@@ -236,7 +236,7 @@
 
 
 	<delete id="orderDetailDelete" parameterType="Order">
-		DELETE FROM order_detail where od_id=#{id}
+		DELETE FROM order_detail where od_id=#{o_id}
 	</delete>
 	
 	<update id="updateOrderDetail" parameterType="Order">

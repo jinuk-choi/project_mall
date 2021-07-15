@@ -310,7 +310,7 @@ public class AdminController {
 		productService.createImage(product);
 	    
 	 
-		String path = "C:\\Users\\l4\\Documents\\Project\\shoppingmall\\src\\shoppingmall-vue\\src\\images\\";
+		String path = "C:\\Users\\l3-morning\\Documents\\vue\\project_vue\\src\\images\\";
 		String thumbPath = path + "thumb\\";
 		String ext = filename.substring(filename.lastIndexOf(".")+1);
 		File file = new File(path + time + ".jpg");
@@ -370,7 +370,7 @@ public class AdminController {
 			productService.productDataUpdate(product);
 			productService.productImgUpdate(product);
 				
-			String path = "C:\\Users\\l4\\Documents\\Project\\shoppingmall\\src\\shoppingmall-vue\\src\\images\\";
+			String path = "C:\\Users\\l3-morning\\Documents\\vue\\project_vue\\src\\images\\";
 			String thumbPath = path + "thumb\\";
 			String ext = filename.substring(filename.lastIndexOf(".")+1);
 			File file = new File(path + time + ".jpg");

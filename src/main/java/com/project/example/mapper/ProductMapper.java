@@ -39,15 +39,12 @@ public interface ProductMapper {
 	
 	public void productImgUpdate(Product product);
 	
-	//홈화면에 상품랭킹에 따른 이미지
+	
 	public List<Product> imageByRank();
 	
-	//홈화면에 거실등 이미지
 	public List<Product> imageLiving();
-	
-	//홈화면에 방등 이미지
+
 	public List<Product> imageRoom();
 	
-	//홈화면에 전기지료 이미지
     public List<Product> imageMaterials();
 }
