@@ -48,16 +48,8 @@ import com.project.example.service.PointService;
 import com.project.example.service.ProductService;
 import com.project.example.service.UserService;
 
-//CrossOrigin을 사용하지 않으면 종종 8080(뷰)에 있는게 교류가 안될떄가 있어서 적어준다.
 @CrossOrigin(origins = "*", maxAge = 3600)
-
 @RestController
-//RestController와 일반 스테레오타입의 그냥 Controller와의 차이점
-//리턴값을 보낼 때 단순 리턴값만 보내는 것이 아니라, HttpStatus.OK와 같은 상태값도 같이 보내야 한다는 것이다.
-//이를 위해서 리턴시에 new ResponseEntity<>를 사용하게 된다.
-//그리고 일반 Controller을 사용할때는 ResponseBody어노테이션을 붙여줘야만, json값으로 리턴이 되어 프론트단으로 뿌릴수가 있었는데, 
-//ResponseEntity<>의 경우 ResponseBody어노테이션을 붙여주지 않아도 자동으로 리턴값을 json객체로 만들어주므로 ResponseBody 어노테이션을 사용할 필요가 없다.
-
 
 //관리자 페이지이므로 경로를 /admin으로 사용함.
 @RequestMapping("/api/admin")
@@ -91,15 +83,6 @@ public class AdminController {
 	@Autowired
 	PointService pointService;
 	
-//  이 부분은 사용안하므로 주석처리함.
-//	@GetMapping("/adminPage")
-//	@PreAuthorize("hasRole('ROLE_ADMIN')")
-//	public ResponseEntity<?>  AccessAdmin(HttpServletRequest request) {
-//		List<UserInfo> userList = userService.read_user_list();
-//		logger.info(userList.toString());
-//		  return new ResponseEntity<>(userList, HttpStatus.OK);
-//	}
-	
 	//회원정보 불러오기
 	//단순 조회기능은 모든 사용자에게 권한을 부여해준다.
 	@GetMapping("/userlist")
@@ -110,7 +93,6 @@ public class AdminController {
 	}
 	
 	//회원탈퇴 처리하기
-	//이 로직으로 들어왔을때 권한이 없으면, alert로 권한이 없습니다를 띄워주도록 하기.
 	@PostMapping("/userdelete")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> delete_user(@Validated @RequestBody UserInfo userinfo){
@@ -121,7 +103,6 @@ public class AdminController {
 	}
 	
 	//회원정보 수정하기
-	//이 로직으로 들어왔을때 권한이 없으면, alert로 권한이 없습니다를 띄워주도록 하기.
 	@PostMapping("/userupdate")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> update_user(@Validated @RequestBody UserInfo userinfo){
@@ -215,7 +196,7 @@ public class AdminController {
 		System.out.println(category.getDate2());
 		category.setName(category.getName());
 		
-		if(category.getDate1().length() < 2 || category.getDate2().length() < 2)  //날짜 정보가 없는 경우, 전체기간에서 찾아옴. (null인 경우)
+		if(category.getDate1().length() < 2 || category.getDate2().length() < 2)  
 		{
 			//1차적으로 분류명을 통해 카테고리 id를 찾아오는 부분 구현하기
 			int findCg_id = categoryService.findCg_id(category.getName());
@@ -233,7 +214,7 @@ public class AdminController {
 		} 
 		else //날짜정보가 있는 경우
 		{		
-			//0이면 다불러와야하는데, 0이면 하나도 못불러옴 이거 고쳐주기
+			
 			int findCg_id = categoryService.findCg_id(category.getName());
 			System.out.println(findCg_id);
 			category.setCg_id(findCg_id);

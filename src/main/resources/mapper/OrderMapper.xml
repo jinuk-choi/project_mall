@@ -2,34 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.example.mapper.OrderMapper">
 
-
- <!-- resultmap 되는 소스 	
-	<resultMap id="User" type="User">
-		<result column="user_name" property="name" />
-		<result column="user_address" property="address" />
-		<result column="user_phone" property="phone" />
-	</resultMap>
-	
-	<resultMap id="Order" type="Order">
-		<result column="o_id" property="id" />
-		<result column="o_state" property="state" />
-		<collection property="user" resultMap="User" />
-	</resultMap>
- -->
-
-
-<!--
-	원래는 order와 product가 1:N의 관계가 되어야 한다. 
-	바로 order와 product의 관계까 아니라,
-	orderdetail은 product를 감싸고 있는 것과 비슷하다.  
-	그래서 order과 orderdetail이 1:N관계가 되어야한다.
-	-->
-
-<!-- 1. order (1) : order_detail(N) -->
-<!-- 2. order_detail (1) : product(1) , order_detail은 prodcut를 감싸고 있는 것과 비슷하다.-->
-<!-- 3. product(1) : pruduct_img(N)  -->
-	
-	
 	<resultMap id="OrderDetail" type="OrderDetail">
 		<result column="od_id" property="od_id" />
 		<result column="o_id"  property="o_id"/>
