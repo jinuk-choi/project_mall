@@ -24,19 +24,19 @@
 <!-- 설정한 로그 등록  -->
 	
 	<!-- mapper 패키지  -->	
-	<logger name="com.shoppingmall.example.mapper" level="TRACE" additivity="false">
+	<logger name="com.project.example.mapper" level="TRACE" additivity="false">
 		<appender-ref ref="FILE" />
 		<appender-ref ref="STDOUT" />
 	</logger>
 	<!-- // mapper 패키지  -->
 	
 	
-	<logger name="com.shoppingmall.example" level="DEBUG" additivity="false">
+	<logger name="com.project.example" level="DEBUG" additivity="false">
 		<appender-ref ref="FILE" />
 		<appender-ref ref="STDOUT" />
 	</logger>
 	
- 	<logger name="org.springframework.web" level="WARN" additivity="false">
+ 	<logger name="org.project.web" level="WARN" additivity="false">
 		<appender-ref ref="FILE" />
 		<appender-ref ref="STDOUT" />
 	</logger>

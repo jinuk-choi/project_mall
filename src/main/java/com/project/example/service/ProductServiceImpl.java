@@ -93,19 +93,16 @@ public class ProductServiceImpl implements ProductService{
 	};
 	
 	@Override
-	public List<Product> imageLiving(){
-		return productmapper.imageLiving();
+	public List<Product> imageTop(){
+		return productmapper.imageTop();
 	};
 	
 	@Override
-	public List<Product> imageRoom(){
-		return productmapper.imageRoom();
+	public List<Product> imagePants(){
+		return productmapper.imagePants();
 	};
 	
-	@Override  //홈화면에 전기지료 이미지
-	public List<Product> imageMaterials(){
-		return productmapper.imageMaterials();
-	};
+	
 }
 
 

@@ -71,23 +71,19 @@ public class UserController {
 		return new ResponseEntity<>(imageByRank, HttpStatus.OK);
 	}
 	
-	@GetMapping("/imageLiving")
-	public ResponseEntity<?> imageLiving(){
-		List<Product> imageLiving = productService.imageLiving();
-		return new ResponseEntity<>(imageLiving, HttpStatus.OK);
+	@GetMapping("/imageTop")
+	public ResponseEntity<?> imageTop(){
+		List<Product> imageTop = productService.imageTop();
+		return new ResponseEntity<>(imageTop, HttpStatus.OK);
 	}
 	
 	
-	@GetMapping("/imageRoom")
-	public ResponseEntity<?> imageRoom(){
-		List<Product> imageRoom = productService.imageRoom();
-		return new ResponseEntity<>(imageRoom, HttpStatus.OK);
+	@GetMapping("/imagePants")
+	public ResponseEntity<?> imagePants(){
+		List<Product> imagePants = productService.imagePants();
+		return new ResponseEntity<>(imagePants, HttpStatus.OK);
 	}
 	
-	@GetMapping("/imageMaterials")
-	public ResponseEntity<?> imageMaterials(){
-		List<Product> imageMaterials = productService.imageMaterials();
-		return new ResponseEntity<>(imageMaterials, HttpStatus.OK);
-	}
+	
 	
 }

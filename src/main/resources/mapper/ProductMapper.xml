@@ -21,7 +21,22 @@
 	 </select>
 	 
 	 
-	  <select id="imageLiving" resultType="Product">
+	  <select id="imageTop" resultType="Product">
+		
+		SELECT pi_unique AS image, ta.p_name AS name, ta.p_id as id
+		
+		FROM product_img
+		
+		JOIN (SELECT p_name, p_id
+				   FROM product
+				   WHERE p_category LIKE CONCAT(10, '%')) ta
+					  
+		ON product_img.p_id = ta.p_id
+	  
+	 </select>
+	 
+	 
+	   <select id="imagePants" resultType="Product">
 		
 		SELECT pi_unique AS image, ta.p_name AS name, ta.p_id as id
 		
@@ -30,21 +45,6 @@
 		JOIN (SELECT p_name, p_id
 				   FROM product
 				   WHERE p_category LIKE CONCAT(20, '%')) ta
-					  
-		ON product_img.p_id = ta.p_id
-	  
-	 </select>
-	 
-	 
-	   <select id="imageRoom" resultType="Product">
-		
-		SELECT pi_unique AS image, ta.p_name AS name, ta.p_id as id
-		
-		FROM product_img
-		
-		JOIN (SELECT p_name, p_id
-				   FROM product
-				   WHERE p_category LIKE CONCAT(40, '%')) ta
 					  
 		ON product_img.p_id = ta.p_id
 	  

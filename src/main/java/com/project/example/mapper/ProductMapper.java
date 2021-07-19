@@ -42,9 +42,8 @@ public interface ProductMapper {
 	
 	public List<Product> imageByRank();
 	
-	public List<Product> imageLiving();
+	public List<Product> imageTop();
 
-	public List<Product> imageRoom();
+	public List<Product> imagePants();
 	
-    public List<Product> imageMaterials();
 }
