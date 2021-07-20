@@ -1,30 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.example.mapper.BoardMapper">
-	<select id="selectBoardList" resultType="Board">
-		SELECT			b_id as bId,
-						b_title as bTitle,
-						b_content as bContent,
-						b_writer as bWriter
-		FROM			boardlist
+
+<resultMap type="User" id="UserMap">
+	<result column="user_id" property="uId"/>
+	<result column="user_name" property="name"/>
+</resultMap>  
+
+<resultMap type="Board" id="BoardMap">
+	<result column="a_idx" property="aIdx"/>
+	<result column="user_id" property="uId"/>
+	<result column="a_title" property="aTitle"/>
+	<result column="a_content" property="aContent"/>
+	<result column="a_date" property="aDate"/>
+	<result column="a_count" property="aCount"/>
+	<result column="a_group" property="aGroup"/>
+	<result column="a_order" property="aOrder"/>
+	<result column="a_depth" property="aDepth"/>
+	<result column="rownum" property="rownum"/>
+	<association property="user" resultMap="UserMap"/>
+</resultMap> 
+
+	<!-- 게시글 목록 -->
+	<select id="selectBoardList" parameterType="Board" resultMap="BoardMap">
+		SELECT         @ROWNUM := @ROWNUM - 1 AS ROWNUM,  	   		   	     	  		  	   	  
+     					 ta.*, tb.user_id, tb.user_name             
+	    FROM           board ta
+	    LEFT JOIN 	   user tb ON ta.user_id = tb.user_id,
+	    			   (SELECT @rownum := (SELECT	COUNT(*)-#{pageNum}+1 FROM board ta)) tc
+	     				 
+		<if test="search != null ">
+			<where> 
+		  	  	<if test="search.type == 1">
+		  	  		a_title LIKE CONCAT('%', #{search.keyword}, '%')
+		  	  	</if>
+		  	  	
+		  	  	<if test="search.type == 2">
+		  	  		a_content LIKE CONCAT('%', #{search.keyword}, '%')
+		  	  	</if>
+		  	  	
+		  	  	<if test="search.type == 3">
+		  	  		a_content LIKE CONCAT('%', #{search.keyword}, '%')
+		  	  			or a_title  LIKE CONCAT('%', #{search.keyword}, '%')
+		  	  	</if>				    	
+			</where>
+		</if>
+		
+	    ORDER BY		a_group DESC, a_order DESC	     		   	
+	    LIMIT			#{pageNum},5
 	</select>
-	<select id="selectBoardDetail" resultType="Board" parameterType="int">
-		SELECT			b_id as bId,
-								b_title as bTitle,
-								b_content as bContent,
-								b_writer as bWriter,
-								b_datetime as bDateTime 
-		FROM				boardlist
-		WHERE			b_id = #{bId}
+	
+	<select id="selectBoardDetail" resultType="Board" resultMap="BoardMap">
+		SELECT			 ta.*, tb.user_id, tb.user_name
+				             
+		FROM			board ta
+		LEFT JOIN       user tb ON ta.user_id = tb.user_id
+		WHERE			a_idx =	#{aIdx}
 	</select>
+	
 	<select id="deleteBoard" resultType="Board" parameterType="int">
 		DELETE			
-		FROM				boardlist
-		WHERE			b_id = #{bId}
+		FROM				board
+		WHERE			a_idx = #{aIdx}
 	</select>
-	<select id="insertBoard" resultType="Board" parameterType="int">
-		INSERT INTO			
-		FROM				boardlist
-		WHERE			b_id = #{bId}
+	
+	<insert id="insertBoard"  parameterType="Board">
+		INSERT INTO board (
+			a_title,
+			a_content,
+			a_group,
+			a_order,
+			a_depth,
+			user_id
+		) VALUES (
+			#{aTitle},
+			#{aContent},
+			#{aGroup},
+			#{aOrder},
+			#{aDepth} + 1,
+			#{uId}
+		)
+		<selectKey keyProperty="aIdx" resultType="Integer">
+	        SELECT LAST_INSERT_ID()
+	    </selectKey>
+	</insert>
+	
+	<update id="updateBoard" parameterType="Board" >
+		UPDATE board SET a_group = LAST_INSERT_ID() WHERE a_idx = LAST_INSERT_ID()
+	</update>
+
+	<update id="updateReBoard" parameterType="Board" >
+		UPDATE board SET a_order = a_order + 1 where a_group = #{aGroup} and a_order >= #{aOrder} and a_idx != last_insert_id() 
+	</update> 
+	
+	<!-- 게시글 갯수 -->
+	<select id="countBoard" resultType="int">
+		SELECT COUNT(*)  count
+		FROM			 board
+		
+		<if test="type != 0  ">
+ 			<where> 
+	    	  	<if test="type == 1">
+	    	  		a_title LIKE CONCAT('%', #{keyword}, '%')
+	    	  	</if>
+	    	  	
+	    	  	<if test="type == 2">
+	    	  		a_content LIKE CONCAT('%', #{keyword}, '%')
+	    	  	</if>
+	    	  	
+	    	  	<if test="type == 3">
+	    	  		a_content LIKE CONCAT('%', #{keyword}, '%')
+	    	  			or a_title  LIKE CONCAT('%', #{keyword}, '%')
+	    	  	</if>				    	
+			</where>
+	   	</if>
 	</select>
+	
+	<!-- 게시글 수정하기 -->
+	<update id="editBoard" parameterType="Board">
+		UPDATE board 
+		SET 			a_title = #{aTitle},
+						a_content = #{aContent}
+		WHERE			a_idx = #{aIdx}	
+	</update>  
+	
+	<!-- 조회수  -->
+	<update id="count" parameterType="Board">
+		UPDATE 			board 
+		SET 			a_count = a_count + 1
+		WHERE			a_idx = #{aIdx}	
+	</update>  
+	
 </mapper>

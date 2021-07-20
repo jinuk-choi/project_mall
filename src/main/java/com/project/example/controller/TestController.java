@@ -40,12 +40,12 @@ public class TestController {
 		return "Public Content.";
 	}
 	
-	@GetMapping("/user")
-	@PreAuthorize("hasRole('USER')")
-	public ResponseEntity<?>  userAccess() {
-		List<Board> boardList = boardService.selectBoardList();
-		return ResponseEntity.ok(boardList);
-	}
+//	@GetMapping("/user")
+//	@PreAuthorize("hasRole('USER')")
+//	public ResponseEntity<?>  userAccess() {
+//		List<Board> boardList = boardService.selectBoardList();
+//		return ResponseEntity.ok(boardList);
+//	}
 	
 	@GetMapping("/admin")
 	@PreAuthorize("hasRole('Admin')")

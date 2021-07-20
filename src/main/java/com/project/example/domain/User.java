@@ -12,6 +12,7 @@ public class User implements UserDetails{
 	
 	private static final long serialVersionUID = 1L;
 	private String username;
+	private String uId;
 	private String password;
 	private String name;
 	private String phone;
@@ -204,6 +205,14 @@ public class User implements UserDetails{
 	@Override
 	public boolean isEnabled() {
 		return isEnabled;
+	}
+
+	public String getuId() {
+		return uId;
+	}
+
+	public void setuId(String uId) {
+		this.uId = uId;
 	}
 
 }

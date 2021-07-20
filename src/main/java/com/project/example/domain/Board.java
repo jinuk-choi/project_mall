@@ -1,47 +1,102 @@
 package com.project.example.domain;
 
 public class Board {
-	private int bId;
-	private String bTitle;
-	private String bContent;
-	private String bWriter;
-	private String bDateTime;
-	
-	public int getbId() {
-		return bId;
+	private int aIdx;
+	private String uId;
+	private int aCount;
+	private int rownum;
+	private String aTitle;
+	private String aContent;
+	private String aWriter;
+	private String aDate;
+	private User user;
+	private int aGroup;
+	private int aOrder;
+	private int aDepth;
+	public int getaIdx() {
+		return aIdx;
 	}
-	public void setbId(int bId) {
-		this.bId = bId;
+	public void setaIdx(int aIdx) {
+		this.aIdx = aIdx;
 	}
-	public String getbTitle() {
-		return bTitle;
+	public String getuId() {
+		return uId;
 	}
-	public void setbTitle(String bTitle) {
-		this.bTitle = bTitle;
+	public void setuId(String uId) {
+		this.uId = uId;
 	}
-	public String getbContent() {
-		return bContent;
+	public int getaCount() {
+		return aCount;
 	}
-	public void setbContent(String bContent) {
-		this.bContent = bContent;
+	public void setaCount(int aCount) {
+		this.aCount = aCount;
 	}
-	public String getbWriter() {
-		return bWriter;
+	public int getRownum() {
+		return rownum;
 	}
-	public void setbWriter(String bWriter) {
-		this.bWriter = bWriter;
+	public void setRownum(int rownum) {
+		this.rownum = rownum;
 	}
-	public String getbDateTime() {
-		return bDateTime;
+	public String getaTitle() {
+		return aTitle;
 	}
-	public void setbDateTime(String bDateTime) {
-		this.bDateTime = bDateTime;
+	public void setaTitle(String aTitle) {
+		this.aTitle = aTitle;
 	}
-	
+	public String getaContent() {
+		return aContent;
+	}
+	public void setaContent(String aContent) {
+		this.aContent = aContent;
+	}
+	public String getaWriter() {
+		return aWriter;
+	}
+	public void setaWriter(String aWriter) {
+		this.aWriter = aWriter;
+	}
+	public String getaDate() {
+		return aDate;
+	}
+	public void setaDate(String aDate) {
+		this.aDate = aDate;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public int getaGroup() {
+		return aGroup;
+	}
+	public void setaGroup(int aGroup) {
+		this.aGroup = aGroup;
+	}
+	public int getaOrder() {
+		return aOrder;
+	}
+	public void setaOrder(int aOrder) {
+		this.aOrder = aOrder;
+	}
+	public int getaDepth() {
+		return aDepth;
+	}
+	public void setaDepth(int aDepth) {
+		this.aDepth = aDepth;
+	}
 	@Override
 	public String toString() {
-		return "Board [bId=" + bId + ", bTitle=" + bTitle + ", bContent=" + bContent + ", bWriter=" + bWriter
-				+ ", bDateTime=" + bDateTime + "]";
+		return "Board [aIdx=" + aIdx + ", uId=" + uId + ", aCount=" + aCount + ", rownum=" + rownum + ", aTitle="
+				+ aTitle + ", aContent=" + aContent + ", aWriter=" + aWriter + ", aDate=" + aDate + ", user=" + user
+				+ ", aGroup=" + aGroup + ", aOrder=" + aOrder + ", aDepth=" + aDepth + ", getaIdx()=" + getaIdx()
+				+ ", getuId()=" + getuId() + ", getaCount()=" + getaCount() + ", getRownum()=" + getRownum()
+				+ ", getaTitle()=" + getaTitle() + ", getaContent()=" + getaContent() + ", getaWriter()=" + getaWriter()
+				+ ", getaDate()=" + getaDate() + ", getUser()=" + getUser() + ", getaGroup()=" + getaGroup()
+				+ ", getaOrder()=" + getaOrder() + ", getaDepth()=" + getaDepth() + ", getClass()=" + getClass()
+				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
+	
+	
 
 }

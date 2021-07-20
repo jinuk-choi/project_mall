@@ -1,17 +1,20 @@
 package com.project.example.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +27,9 @@ import com.project.example.service.CategoryService;
 import com.project.example.service.OrderService;
 import com.project.example.service.ProductService;
 import com.project.example.service.UserService;
+import com.project.example.domain.Board;
+import com.project.example.domain.Pagination;
+import com.project.example.domain.Search;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -82,6 +88,31 @@ public class UserController {
 	public ResponseEntity<?> imagePants(){
 		List<Product> imagePants = productService.imagePants();
 		return new ResponseEntity<>(imagePants, HttpStatus.OK);
+	}
+	
+	@GetMapping({"/board","/board/{pageOpt}","/board/{pageOpt}/{typeOpt}/{keywordOpt}"})
+	public ResponseEntity<?>  userAccess(@PathVariable Optional<Integer> pageOpt
+										,@PathVariable Optional<Integer> typeOpt 
+										,@PathVariable Optional<String> keywordOpt ) {
+		Search search = null;
+		int count = 0;
+		int page = pageOpt.isPresent() ? pageOpt.get() : 1;
+		int type = typeOpt.isPresent() ? typeOpt.get() : 0;
+		String keyword = keywordOpt.isPresent() ? keywordOpt.get() : null ;
+		
+		if(keyword != null ) {
+			search = new Search(type, keyword);
+		}
+		
+		Pagination<Board> pagination = new Pagination<Board>();
+		List<Board> boardList = null;
+		
+		count = boardService.countBoard(search);
+		pagination = new Pagination<Board>(page,count,search);
+		boardList = boardService.selectBoardList(pagination);
+		pagination.setList(boardList);
+		
+		return new ResponseEntity<>(pagination, HttpStatus.OK);
 	}
 	
 	
