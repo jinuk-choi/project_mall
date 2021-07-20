@@ -21,10 +21,10 @@ public class User implements UserDetails{
 	private String point; 
 	private String uDateTime;
 	private Collection<? extends GrantedAuthority> authorities;
-	private Boolean isAccountNonExpired;
-	private Boolean isAccountNonLocked;
-	private Boolean isCredentialsNonExpired;
-	private Boolean isEnabled;
+	private boolean isAccountNonExpired;
+	private boolean isAccountNonLocked;
+	private boolean isCredentialsNonExpired;
+	private boolean isEnabled;
 
 	private String date; // 회원가입시 회원가입 축하 포인트를 줄때 사용할 날짜.
 
@@ -33,35 +33,35 @@ public class User implements UserDetails{
 	
 	
 	
-	public Boolean getIsAccountNonExpired() {
+	public boolean getIsAccountNonExpired() {
 		return isAccountNonExpired;
 	}
 
-	public void setIsAccountNonExpired(Boolean isAccountNonExpired) {
+	public void setIsAccountNonExpired(boolean isAccountNonExpired) {
 		this.isAccountNonExpired = isAccountNonExpired;
 	}
 
-	public Boolean getIsAccountNonLocked() {
+	public boolean getIsAccountNonLocked() {
 		return isAccountNonLocked;
 	}
 
-	public void setIsAccountNonLocked(Boolean isAccountNonLocked) {
+	public void setIsAccountNonLocked(boolean isAccountNonLocked) {
 		this.isAccountNonLocked = isAccountNonLocked;
 	}
 
-	public Boolean getIsCredentialsNonExpired() {
+	public boolean getIsCredentialsNonExpired() {
 		return isCredentialsNonExpired;
 	}
 
-	public void setIsCredentialsNonExpired(Boolean isCredentialsNonExpired) {
+	public void setIsCredentialsNonExpired(boolean isCredentialsNonExpired) {
 		this.isCredentialsNonExpired = isCredentialsNonExpired;
 	}
 
-	public Boolean getIsEnabled() {
+	public boolean getIsEnabled() {
 		return isEnabled;
 	}
 
-	public void setIsEnabled(Boolean isEnabled) {
+	public void setIsEnabled(boolean isEnabled) {
 		this.isEnabled = isEnabled;
 	}
 
@@ -108,15 +108,6 @@ public class User implements UserDetails{
 	public void setPoint(String point) {
 		this.point = point;
 	}
-
-
-//	@Override
-//	public String toString() {
-//		return "User [username=" + username + ", password=" + password + ", name=" + name + ", phone=" + phone
-//				+ ", uDateTime=" + uDateTime + ", authorities=" + authorities + ", isAccountNonExpired="
-//				+ isAccountNonExpired + ", isAccountNonLocked=" + isAccountNonLocked + ", isCredentialsNonExpired="
-//				+ isCredentialsNonExpired + ", isEnabled=" + isEnabled + "]";
-//	}
 
 	public String getuDateTime() {
 		return uDateTime;
