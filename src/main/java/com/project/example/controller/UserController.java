@@ -129,7 +129,6 @@ public class UserController {
 	}
 	
 	@DeleteMapping("/boardDelete/{aIdx}")
-	@PreAuthorize("hasRole('USER')")
 	public ResponseEntity<?>  boardDelete(@PathVariable(value = "aIdx") int aIdx) {
 		boardService.deleteBoard(aIdx);
 		logger.info("delete"+aIdx);
@@ -138,7 +137,6 @@ public class UserController {
 	}
 	
 	@PostMapping("/boardWrite")
-	@PreAuthorize("hasRole('USER')")
 	public ResponseEntity<?>  boardWrite(@RequestBody Board board) {
 		boardService.insertBoard(board);
 		logger.info("Write"+board);

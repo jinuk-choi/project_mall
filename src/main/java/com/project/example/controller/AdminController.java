@@ -53,6 +53,7 @@ import com.project.example.service.UserService;
 
 //관리자 페이지이므로 경로를 /admin으로 사용함.
 @RequestMapping("/api/admin")
+
 public class AdminController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
@@ -84,8 +85,8 @@ public class AdminController {
 	PointService pointService;
 	
 	//회원정보 불러오기
-	//단순 조회기능은 모든 사용자에게 권한을 부여해준다.
 	@GetMapping("/userlist")
+	//@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> read_user(){
 		List<UserInfo> userList = userService.shopping_readUser();		
 		//이 부분 나중에 ResponseEntity<>를 사용하도록 고치기.
@@ -94,7 +95,6 @@ public class AdminController {
 	
 	//회원탈퇴 처리하기
 	@PostMapping("/userdelete")
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> delete_user(@Validated @RequestBody UserInfo userinfo){
 		userService.delete_user(userinfo.getUsername());		
 		System.out.println("체크");
@@ -104,7 +104,6 @@ public class AdminController {
 	
 	//회원정보 수정하기
 	@PostMapping("/userupdate")
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> update_user(@Validated @RequestBody UserInfo userinfo){
 		System.out.println("체크");
 		userService.updateUser(userinfo);
@@ -157,7 +156,6 @@ public class AdminController {
 	
 	//분류명수정하기
 	@PostMapping("/categoryupdate")
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> categoryUpdate(@Validated @RequestBody Category category){
 		categoryService.categoryUpdate(category);
 		List<Category> categoryList = categoryService.readCategory();
@@ -166,7 +164,6 @@ public class AdminController {
 	
 	//카테고리정보 불러오기
 	@PostMapping("/categoryadd")
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> categoryAdd(@Validated @RequestBody Category category){
 		System.out.println(category.getName()+"wjflwejfkljwlekfjkl");
 		categoryService.categoryAdd(category);		
@@ -263,7 +260,6 @@ public class AdminController {
 
 	//상품삭제하기
 	@PostMapping("/productdelete")
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> productDelete(@Validated @RequestBody Product product){
 		productService.productDelete(product);
 		productService.product_img_Delete(product);
@@ -325,7 +321,6 @@ public class AdminController {
 	
 
 	//상품정보수정하기
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value="/productdataupdate", method=RequestMethod.POST)
 	public ResponseEntity<?> productDataUpdate(Product product){
 		
@@ -411,7 +406,6 @@ public class AdminController {
 	
 	//상세정보 상품삭제
 	@PostMapping("/orderdetaildelete")
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> orderDetailDelete(@Validated @RequestBody OrderDetail orderdetail){
 		
 		//미리 o_id를 입력해둔다.
@@ -428,7 +422,6 @@ public class AdminController {
 	
 	//상세정보 상품수정
 	@PostMapping("/orderdetailupdate")
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> orderDetailUpdate(@Validated @RequestBody OrderDetail orderdetail){
 		//미리 o_id를 입력해둔다.
 		Order order = new Order();
