@@ -146,7 +146,6 @@ public class UserController {
 	}
 	
 	@PostMapping("/boardEdit")
-	@PreAuthorize("hasRole('USER')")
 	public ResponseEntity<?>  boardEdit(@RequestBody Board board) {
 		boardService.editBoard(board);
 		logger.info("Edit"+board);
