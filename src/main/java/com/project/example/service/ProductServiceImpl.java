@@ -98,6 +98,16 @@ public class ProductServiceImpl implements ProductService{
 	};
 	
 	@Override
+	public List<Product> imageShortTop(){
+		return productmapper.imageShortTop();
+	};
+	
+	@Override
+	public List<Product> imageLongTop(){
+		return productmapper.imageLongTop();
+	};
+	
+	@Override
 	public List<Product> imagePants(){
 		return productmapper.imagePants();
 	};

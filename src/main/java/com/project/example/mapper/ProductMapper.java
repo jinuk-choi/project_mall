@@ -39,10 +39,13 @@ public interface ProductMapper {
 	
 	public void productImgUpdate(Product product);
 	
-	
 	public List<Product> imageByRank();
 	
 	public List<Product> imageTop();
+	
+	public List<Product> imageShortTop();
+	
+	public List<Product> imageLongTop();
 
 	public List<Product> imagePants();
 	

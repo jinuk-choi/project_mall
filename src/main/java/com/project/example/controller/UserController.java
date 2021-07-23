@@ -85,6 +85,18 @@ public class UserController {
 		return new ResponseEntity<>(imageTop, HttpStatus.OK);
 	}
 	
+	@GetMapping("/imageShortTop")
+	public ResponseEntity<?> imageShortTop(){
+		List<Product> imageShortTop = productService.imageShortTop();
+		return new ResponseEntity<>(imageShortTop, HttpStatus.OK);
+	}
+	
+	@GetMapping("/imageLongTop")
+	public ResponseEntity<?> imageLongTop(){
+		List<Product> imageLongTop = productService.imageLongTop();
+		return new ResponseEntity<>(imageLongTop, HttpStatus.OK);
+	}
+	
 	
 	@GetMapping("/imagePants")
 	public ResponseEntity<?> imagePants(){
