@@ -112,6 +112,16 @@ public class ProductServiceImpl implements ProductService{
 		return productmapper.imagePants();
 	};
 	
+	@Override
+	public List<Product> imageLongPants(){
+		return productmapper.imageLongPants();
+	};
+	
+	@Override
+	public List<Product> imageShortPants(){
+		return productmapper.imageShortPants();
+	};
+	
 	
 }
 

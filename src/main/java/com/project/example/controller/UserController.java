@@ -104,6 +104,18 @@ public class UserController {
 		return new ResponseEntity<>(imagePants, HttpStatus.OK);
 	}
 	
+	@GetMapping("/imageLongPants")
+	public ResponseEntity<?> imageLongPants(){
+		List<Product> imageLongPants = productService.imageLongPants();
+		return new ResponseEntity<>(imageLongPants, HttpStatus.OK);
+	}
+	
+	@GetMapping("/imageShortPants")
+	public ResponseEntity<?> imageShortPants(){
+		List<Product> imageShortPants = productService.imageShortPants();
+		return new ResponseEntity<>(imageShortPants, HttpStatus.OK);
+	}
+	
 	@GetMapping({"/board","/board/{pageOpt}","/board/{pageOpt}/{typeOpt}/{keywordOpt}"})
 	public ResponseEntity<?>  userAccess(@PathVariable Optional<Integer> pageOpt
 										,@PathVariable Optional<Integer> typeOpt 

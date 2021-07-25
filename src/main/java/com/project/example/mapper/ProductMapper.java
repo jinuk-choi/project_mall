@@ -49,4 +49,8 @@ public interface ProductMapper {
 
 	public List<Product> imagePants();
 	
+	public List<Product> imageLongPants();
+	
+	public List<Product> imageShortPants();
+	
 }

@@ -45,6 +45,10 @@ public interface ProductService {
 	public List<Product> imageLongTop();
 
 	public List<Product> imagePants();
+	
+	public List<Product> imageLongPants();
+	
+	public List<Product> imageShortPants();
 
 }
 

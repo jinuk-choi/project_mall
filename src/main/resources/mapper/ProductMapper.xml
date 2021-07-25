@@ -66,7 +66,7 @@
 	  
 	 </select>
 	 
-	 
+<!-- Pants 이미지 -->
 	   <select id="imagePants" resultType="Product">
 		
 		SELECT pi_unique AS image, ta.p_name AS name, ta.p_id as id
@@ -76,6 +76,36 @@
 		JOIN (SELECT p_name, p_id
 				   FROM product
 				   WHERE p_category LIKE CONCAT(20, '%')) ta
+					  
+		ON product_img.p_id = ta.p_id
+	  
+	 </select>
+	 
+<!-- LongPants 이미지 -->
+	   <select id="imageLongPants" resultType="Product">
+		
+		SELECT pi_unique AS image, ta.p_name AS name, ta.p_id as id
+		
+		FROM product_img
+		
+		JOIN (SELECT p_name, p_id
+				   FROM product
+				   WHERE p_category LIKE CONCAT(2010, '%')) ta
+					  
+		ON product_img.p_id = ta.p_id
+	  
+	 </select>
+	 
+<!-- ShortPants 이미지 -->
+	   <select id="imageShortPants" resultType="Product">
+		
+		SELECT pi_unique AS image, ta.p_name AS name, ta.p_id as id
+		
+		FROM product_img
+		
+		JOIN (SELECT p_name, p_id
+				   FROM product
+				   WHERE p_category LIKE CONCAT(2020, '%')) ta
 					  
 		ON product_img.p_id = ta.p_id
 	  
@@ -188,22 +218,6 @@
 	<resultMap id="productImage" type="Product_img">
 	</resultMap>
  
- <!-- 
-	<select id="readAllProduct" resultMap="productData, productImage">
-		SELECT			product.p_id					        as 	id,
-						p_name 							as 	name,
-						p_price                         as  price,
-						p_order_count					as	order_count,
-						p_views                         as  views,	
-						p_category                      as  category,
-						p_quantity			            as  quantity,
-						pi_unique                      as image,
-						p_text                        as text
-		FROM 			product 
-		JOIN product_img ON (product.p_id = product_img.p_id);
-	</select>
-	 -->
-	
 	<select id="readAllProduct" resultMap="productData, productImage">
 		SELECT			product.p_id					        as 	id,
 						p_name 							as 	name,
