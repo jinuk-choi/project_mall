@@ -23,15 +23,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.example.config.JwtUtils;
+import com.project.example.domain.Board;
+import com.project.example.domain.Comment;
+import com.project.example.domain.ListVo;
+import com.project.example.domain.Pagination;
 import com.project.example.domain.Product;
+import com.project.example.domain.Search;
 import com.project.example.service.BoardService;
 import com.project.example.service.CategoryService;
+import com.project.example.service.CommentService;
 import com.project.example.service.OrderService;
 import com.project.example.service.ProductService;
 import com.project.example.service.UserService;
-import com.project.example.domain.Board;
-import com.project.example.domain.Pagination;
-import com.project.example.domain.Search;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -63,6 +66,9 @@ public class UserController {
 	
 	@Autowired
 	OrderService orderService;
+	
+	@Autowired
+	CommentService commentService;
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
@@ -176,6 +182,74 @@ public class UserController {
 		
 		return new ResponseEntity<>(board, HttpStatus.OK);
 		
+	}
+	
+	@GetMapping({"/commentList","/commentList/{pageOpt}"})
+	public ResponseEntity<?>  commentList(@PathVariable Optional<Integer> pageOpt
+									     ,@RequestParam int pId ) {
+		
+		Product product = null;
+		int count = 0;
+		int page = pageOpt.isPresent() ? pageOpt.get() : 1;
+		int pageNum = 0;
+		
+		Pagination<Comment> pagination = null;
+		List<Comment> commentList = null;
+		ListVo listvo = null;
+		
+		count = commentService.commentCount(product);
+		pagination = new Pagination<Comment>(page,count);
+		
+		pageNum = pagination.getPageNum();
+		listvo = new ListVo(pId,pageNum);
+		commentList = commentService.selectCommentList(listvo);
+		pagination.setList(commentList);
+		
+		return new ResponseEntity<>(pagination, HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/commentDelete/{cId}")
+	@PreAuthorize("hasRole('USER')")
+	public ResponseEntity<?>  commentDelete(@PathVariable(value = "cId") int cId,
+											@RequestParam int pId) {
+		commentService.commentDelete(cId);
+		
+		Product product = null;
+		int count = 0;
+		int page = 1;
+		int pageNum = 0;
+		
+		Pagination<Comment> pagination = null;
+		List<Comment> commentList = null;
+		ListVo listvo = null;
+		
+		count = commentService.commentCount(product);
+		pagination = new Pagination<Comment>(page,count);
+		pageNum = pagination.getPageNum();
+		listvo = new ListVo(pId,pageNum);
+		commentList = commentService.selectCommentList(listvo);
+		pagination.setList(commentList);
+		
+		
+		return new ResponseEntity<>(pagination, HttpStatus.OK);
+	}
+	
+	@PostMapping("/commentWrite")
+	public ResponseEntity<?>  commentWrite(@RequestBody Comment comment) {
+		commentService.insertComment(comment);
+		logger.info("Write"+comment);
+		
+		
+		return new ResponseEntity<>(comment, HttpStatus.OK);
+	}
+	
+	@PostMapping("/commentEdit")
+	public ResponseEntity<?>  commentEdit(@RequestBody Comment comment) {
+		commentService.editComment(comment);
+		logger.info("Edit"+comment);
+		
+		
+		return new ResponseEntity<>(comment, HttpStatus.OK);
 	}
 	
 	
