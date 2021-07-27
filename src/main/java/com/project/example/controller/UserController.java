@@ -186,9 +186,9 @@ public class UserController {
 	
 	@GetMapping({"/commentList","/commentList/{pageOpt}"})
 	public ResponseEntity<?>  commentList(@PathVariable Optional<Integer> pageOpt
-									     ,@RequestParam int pId ) {
+									     ,@RequestParam int id 
+									     ,Product product) {
 		
-		Product product = null;
 		int count = 0;
 		int page = pageOpt.isPresent() ? pageOpt.get() : 1;
 		int pageNum = 0;
@@ -201,7 +201,7 @@ public class UserController {
 		pagination = new Pagination<Comment>(page,count);
 		
 		pageNum = pagination.getPageNum();
-		listvo = new ListVo(pId,pageNum);
+		listvo = new ListVo(id,pageNum);
 		commentList = commentService.selectCommentList(listvo);
 		pagination.setList(commentList);
 		
@@ -209,12 +209,11 @@ public class UserController {
 	}
 	
 	@DeleteMapping("/commentDelete/{cId}")
-	@PreAuthorize("hasRole('USER')")
 	public ResponseEntity<?>  commentDelete(@PathVariable(value = "cId") int cId,
-											@RequestParam int pId) {
+											@RequestParam int id,
+											Product product) {
 		commentService.commentDelete(cId);
 		
-		Product product = null;
 		int count = 0;
 		int page = 1;
 		int pageNum = 0;
@@ -226,7 +225,7 @@ public class UserController {
 		count = commentService.commentCount(product);
 		pagination = new Pagination<Comment>(page,count);
 		pageNum = pagination.getPageNum();
-		listvo = new ListVo(pId,pageNum);
+		listvo = new ListVo(id,pageNum);
 		commentList = commentService.selectCommentList(listvo);
 		pagination.setList(commentList);
 		
@@ -235,21 +234,55 @@ public class UserController {
 	}
 	
 	@PostMapping("/commentWrite")
-	public ResponseEntity<?>  commentWrite(@RequestBody Comment comment) {
+	public ResponseEntity<?>  commentWrite(@RequestBody Comment comment,
+										   @RequestParam int id,
+										   Product product) {
+		
 		commentService.insertComment(comment);
-		logger.info("Write"+comment);
+		
+		int count = 0;
+		int page = 1;
+		int pageNum = 0;
+		
+		Pagination<Comment> pagination = null;
+		List<Comment> commentList = null;
+		ListVo listvo = null;
+		
+		count = commentService.commentCount(product);
+		pagination = new Pagination<Comment>(page,count);
+		pageNum = pagination.getPageNum();
+		listvo = new ListVo(id,pageNum);
+		commentList = commentService.selectCommentList(listvo);
+		pagination.setList(commentList);
 		
 		
-		return new ResponseEntity<>(comment, HttpStatus.OK);
+		return new ResponseEntity<>(pagination, HttpStatus.OK);
 	}
 	
 	@PostMapping("/commentEdit")
-	public ResponseEntity<?>  commentEdit(@RequestBody Comment comment) {
+	public ResponseEntity<?>  commentEdit(@RequestBody Comment comment,
+										  @RequestParam int id,
+										  Product product) {
+		
 		commentService.editComment(comment);
-		logger.info("Edit"+comment);
+		
+		int count = 0;
+		int page = 1;
+		int pageNum = 0;
+		
+		Pagination<Comment> pagination = null;
+		List<Comment> commentList = null;
+		ListVo listvo = null;
+		
+		count = commentService.commentCount(product);
+		pagination = new Pagination<Comment>(page,count);
+		pageNum = pagination.getPageNum();
+		listvo = new ListVo(id,pageNum);
+		commentList = commentService.selectCommentList(listvo);
+		pagination.setList(commentList);
 		
 		
-		return new ResponseEntity<>(comment, HttpStatus.OK);
+		return new ResponseEntity<>(pagination, HttpStatus.OK);
 	}
 	
 	

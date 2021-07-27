@@ -13,7 +13,7 @@
 	<result column="user_id" property="uId"/>
 	<result column="c_content" property="cContent"/>
 	<result column="c_date" property="cDate"/>
-	<result column="p_id" property="pId"/>
+	<result column="p_id" property="id"/>
 	<result column="c_rating" property="cRating"/>
 	<association property="user" resultMap="User"/>
 </resultMap> 
@@ -22,15 +22,15 @@
     	  SELECT         ta.*, tb.user_id, tb.user_name		             
 	      FROM           comment ta
 	      LEFT JOIN 	 user tb ON ta.user_id = tb.user_id	
-	      WHERE			 p_id = #{pId}		  	  		   	
-	      LIMIT			 #{pageNum},3
+	      WHERE			 p_id = #{id}		  	  		   	
+	      LIMIT			 #{pageNum},5
 </select>
 
 <!-- 댓글 갯수 -->
 <select id="commentCount"  resultType="int">
     	  SELECT COUNT(*)	count	             
 	      FROM           	comment	  
-	      WHERE			 	p_id = #{pId}					  	  		   	
+	      WHERE			 	p_id = #{id}					  	  		   	
 	      
 </select>
 
@@ -41,16 +41,16 @@
 			c_id,
 			p_id,
 			c_content,
-			c_rating,
-			c_date
+			c_rating
+			
 			
 		)VALUES (
 			#{uId},
 			#{cId},
-			#{pId},
+			#{id},
 			#{cContent},
-			#{cRating},
-			#{cDate}
+			#{cRating}
+		
 		)
 		
 </insert>
