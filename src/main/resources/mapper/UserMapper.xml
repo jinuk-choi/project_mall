@@ -13,7 +13,10 @@
 	<!-- 로그인 시 사용자 조회 -->
 	<select id="getUser" parameterType="UserInfo" resultType="UserInfo">
 		SELECT        user_id                  as username,
-					  user_name                as name
+					  user_name                as name,
+					  user_phone			   as		phone,
+					  user_email               as      email, 
+					  user_address			   as	  address
 		FROM		  user
 		WHERE         user_id  = #{username}
 	</select>
@@ -26,7 +29,8 @@
 						user_password 							as 	password,
 						user_name								as	    name,
 						user_phone								as		phone,
-						user_email                              as      email,   
+						user_email                              as      email, 
+						user_address							as	  address,  
 						user_isAccountNonExpired 				as 	isAccountNonExpired,
 		        		user_isAccountNonLocked 				as 	isAccountNonLocked,
 		        		user_isCredentialNonExpired 			as 	isCredentialsNonExpired,
