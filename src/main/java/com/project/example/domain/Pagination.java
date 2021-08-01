@@ -14,7 +14,7 @@ public class Pagination<T> {
 	int nextPage;     // pagination의 다음 목록
 	public static final int pageUnit=5;  // 한번에 불러 올 pagination 수
 	public static final int perPage=5;   // 한번에 불러 올 userCount 수
-	Search search;
+	Search search;	
 	List<T> list;
 	
 

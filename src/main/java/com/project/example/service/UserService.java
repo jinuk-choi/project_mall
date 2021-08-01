@@ -24,10 +24,6 @@ public interface UserService extends UserDetailsService{
     Collection<GrantedAuthority> getAuthorities(String username);
 
 	public void createAuthority(User user);
-
-	
-	//-----------------------아래 부터 쇼핑몰 프로젝트---------------------------------
-	
 	
 	//중복검사하기
 	public User duplicate(User user);

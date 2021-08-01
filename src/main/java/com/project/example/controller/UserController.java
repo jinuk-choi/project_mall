@@ -72,56 +72,63 @@ public class UserController {
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
+	//상품정보
 	@PostMapping("/product")
 	public ResponseEntity<?> productUpdate(@Validated @RequestBody Product product){
 		List<Product> product_one = productService.readProduct(product);
 		return new ResponseEntity<>(product_one, HttpStatus.OK);
 	}
 	
-	
+	//랭크별 이미지
 	@GetMapping("/imageByRank")
 	public ResponseEntity<?> imageByRank(){
 		List<Product> imageByRank = productService.imageByRank();
 		return new ResponseEntity<>(imageByRank, HttpStatus.OK);
 	}
 	
+	//상의 이미지
 	@GetMapping("/imageTop")
 	public ResponseEntity<?> imageTop(){
 		List<Product> imageTop = productService.imageTop();
 		return new ResponseEntity<>(imageTop, HttpStatus.OK);
 	}
 	
+	//반팔 이미지
 	@GetMapping("/imageShortTop")
 	public ResponseEntity<?> imageShortTop(){
 		List<Product> imageShortTop = productService.imageShortTop();
 		return new ResponseEntity<>(imageShortTop, HttpStatus.OK);
 	}
 	
+	//긴팔 이미지
 	@GetMapping("/imageLongTop")
 	public ResponseEntity<?> imageLongTop(){
 		List<Product> imageLongTop = productService.imageLongTop();
 		return new ResponseEntity<>(imageLongTop, HttpStatus.OK);
 	}
 	
-	
+	//하의 이미지
 	@GetMapping("/imagePants")
 	public ResponseEntity<?> imagePants(){
 		List<Product> imagePants = productService.imagePants();
 		return new ResponseEntity<>(imagePants, HttpStatus.OK);
 	}
 	
+	//긴바지 이미지
 	@GetMapping("/imageLongPants")
 	public ResponseEntity<?> imageLongPants(){
 		List<Product> imageLongPants = productService.imageLongPants();
 		return new ResponseEntity<>(imageLongPants, HttpStatus.OK);
 	}
 	
+	//반바지 이미지
 	@GetMapping("/imageShortPants")
 	public ResponseEntity<?> imageShortPants(){
 		List<Product> imageShortPants = productService.imageShortPants();
 		return new ResponseEntity<>(imageShortPants, HttpStatus.OK);
 	}
 	
+	//Q&A게시판 리스트
 	@GetMapping({"/board","/board/{pageOpt}","/board/{pageOpt}/{typeOpt}/{keywordOpt}"})
 	public ResponseEntity<?>  userAccess(@PathVariable Optional<Integer> pageOpt
 										,@PathVariable Optional<Integer> typeOpt 
@@ -147,6 +154,7 @@ public class UserController {
 		return new ResponseEntity<>(pagination, HttpStatus.OK);
 	}
 	
+	//Q&A게시판 상세보기
 	@GetMapping("/boardDetail")
 	public ResponseEntity<?>  boardDetail(@RequestParam int aIdx, Board board) {
 		boardService.count(board);
@@ -158,6 +166,7 @@ public class UserController {
 		
 	}
 	
+	//Q&A게시판 삭제
 	@DeleteMapping("/boardDelete/{aIdx}")
 	public ResponseEntity<?>  boardDelete(@PathVariable(value = "aIdx") int aIdx) {
 		boardService.deleteBoard(aIdx);
@@ -166,6 +175,7 @@ public class UserController {
 		return new ResponseEntity<>(aIdx, HttpStatus.OK);
 	}
 	
+	//Q&A게시판 글쓰기
 	@PostMapping("/boardWrite")
 	public ResponseEntity<?>  boardWrite(@RequestBody Board board) {
 		boardService.insertBoard(board);
@@ -175,6 +185,7 @@ public class UserController {
 		
 	}
 	
+	//Q&A게시판 수정하기
 	@PostMapping("/boardEdit")
 	public ResponseEntity<?>  boardEdit(@RequestBody Board board) {
 		boardService.editBoard(board);
@@ -184,6 +195,7 @@ public class UserController {
 		
 	}
 	
+	//상품후기 리스트
 	@GetMapping({"/commentList","/commentList/{pageOpt}"})
 	public ResponseEntity<?>  commentList(@PathVariable Optional<Integer> pageOpt
 									     ,@RequestParam int id 
@@ -208,6 +220,7 @@ public class UserController {
 		return new ResponseEntity<>(pagination, HttpStatus.OK);
 	}
 	
+	//상품후기 삭제하기
 	@DeleteMapping("/commentDelete/{cId}")
 	public ResponseEntity<?>  commentDelete(@PathVariable(value = "cId") int cId,
 											@RequestParam int id,
@@ -233,6 +246,7 @@ public class UserController {
 		return new ResponseEntity<>(pagination, HttpStatus.OK);
 	}
 	
+	//상품후기 작성하기
 	@PostMapping("/commentWrite")
 	public ResponseEntity<?>  commentWrite(@RequestBody Comment comment,
 										   @RequestParam int id,
@@ -259,6 +273,7 @@ public class UserController {
 		return new ResponseEntity<>(pagination, HttpStatus.OK);
 	}
 	
+	//상품후기 수정하기
 	@PostMapping("/commentEdit")
 	public ResponseEntity<?>  commentEdit(@RequestBody Comment comment,
 										  @RequestParam int id,

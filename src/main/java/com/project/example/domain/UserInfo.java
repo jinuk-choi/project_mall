@@ -9,7 +9,6 @@ public class UserInfo {
 
 	private static final long serialVersionUID = 1L;
 	
-	
 	//아래의 new_username과 temp는 회원정보에서 사용자의 id를 수정할때 처리하기위해 만들게 된 변수이다.
 	//새롭게 변경되는 id이름
 	private String new_username;

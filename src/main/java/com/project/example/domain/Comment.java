@@ -2,15 +2,15 @@ package com.project.example.domain;
 
 public class Comment {
 	
-	private int cId;
-	private int id;
-	private String uId;
-	private int cRating;
-	private String cContent;
-	private String cDate;
-	private User user;
-	private Product product;
-	private boolean bTn;
+	private int cId;		//상품후기의 기본키
+	private int id;			//상품번호
+	private String uId;		//사용자 ID
+	private int cRating;	//별점
+	private String cContent;//내용
+	private String cDate;	//작성날짜
+	private User user;		//사용자VO
+	private Product product;//상품VO
+	private boolean bTn;	//버튼 활성화 및 비활성화를 구분하기위하여 사용
 	
 	public int getcId() {
 		return cId;

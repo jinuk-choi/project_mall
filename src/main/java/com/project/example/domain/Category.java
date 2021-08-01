@@ -5,9 +5,7 @@ public class Category {
 	private int cg_id; //상품코드
 	private String name; //카테고리 목록이름
 	private String product_count; //상품수
-	
-	//날짜정보가 있을 경우 날짜정보와 분류명을 함께 사용해서 데이터를 불러오기 위한 변수
-	public String date1;
+	public String date1; //날짜정보가 있을 경우 날짜정보와 분류명을 함께 사용해서 데이터를 불러오기 위한 변수
 	public String date2;
 	
 	public String getDate1() {

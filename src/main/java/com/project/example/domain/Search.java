@@ -1,14 +1,14 @@
 package com.project.example.domain;
 
 public class Search {
-	private int type;
+	
+	private int type;		//type별 게시글 검색을 구현 제목=1,내용=2,제목및내용=3
 	private String keyword;
 	
 	public final static int NONE = 0;
 	public final static int TITLE = 1;
 	public final static int CONTENT = 2;
 	public final static int TITLE_CONTENT = 3;
-	//public final static int WRITER = 4;
 	
 	public Search() {
 		this(NONE, "");

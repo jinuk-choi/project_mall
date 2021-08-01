@@ -86,10 +86,9 @@ public class AdminController {
 	
 	//회원정보 불러오기
 	@GetMapping("/userlist")
-	//@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<?> read_user(){
 		List<UserInfo> userList = userService.shopping_readUser();		
-		//이 부분 나중에 ResponseEntity<>를 사용하도록 고치기.
+		
 		return new ResponseEntity<>(userList, HttpStatus.OK);
 	}
 	
@@ -475,12 +474,10 @@ public class AdminController {
 		try {		
 			//일일 매출
 			if(len2 == 0) {
-				//readSales_oneday 말고 나머지는 mapper에서 쓰이는 쿼리가 같기 때문에 나중에 리팩터링 해주기
 				salesData = orderService.readSales_oneday(dateinfo.getDateinfo());
 			}
 			//일간매출
 			else if(len1 == 10 && len2 == 10) {
-				//readSales_oneday 말고 나머지는 mapper에서 쓰이는 쿼리가 같기 때문에 나중에 리팩터링 해주기
 				salesData = orderService.readSales_days(dateinfo.getDateinfo());	
 			}
 			//월간매출
@@ -508,7 +505,7 @@ public class AdminController {
 					
 				System.out.println(dateinfo.getDateinfo().date1);
 				System.out.println(dateinfo.getDateinfo().date2);
-				//readSales_oneday 말고 나머지는 mapper에서 쓰이는 쿼리가 같기 때문에 나중에 리팩터링 해주기
+
 				salesData = orderService.readSales_month(dateinfo.getDateinfo());
 			}
 			
@@ -520,7 +517,7 @@ public class AdminController {
 				
 				System.out.println(dateinfo.getDateinfo().date1);
 				System.out.println(dateinfo.getDateinfo().date2);
-				//readSales_oneday 말고 나머지는 mapper에서 쓰이는 쿼리가 같기 때문에 나중에 리팩터링 해주기
+			
 				salesData = orderService.readSales_year(dateinfo.getDateinfo());
 			}	
 			

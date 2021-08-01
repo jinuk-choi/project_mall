@@ -59,26 +59,9 @@ public class AuthController {
 	@Autowired
 	PointService pointService;
 	
-	
+	//로그인시 사용자 조회
 	@GetMapping("/getuser")
-	public ResponseEntity<?> getuser(@RequestParam String username){
-		
-//		System.out.println(username);
-//		
-//		User param = new User();
-//		param.setUsername(username);
-//		
-//		User user = userService.getUser(param);
-//		System.out.println(user.toString());
-		
-//		return new ResponseEntity<>(user, HttpStatus.OK);
-//		이렇게 넘기니까 json 오류가 났다. 생각해보니 user객체는 시큐리티 때문에 User클래스에서 UserDetails를 implements하고 있다.
-//		그래서 UserDetails에 모든게 구현된게 아니기 때문에 그 하위클래스인 User클래스 객체를 넘기는 과정에서 오류가 발생한 것 같다.
-//		아 맞네...
-//      밑에 signin처럼 User Vo를 넘길때는 반환 형식이 틀려지네		
-		
-//		해결책으로 Vo를 User 대신 UserInfo를 사용해서 넘기도록 한다.		
-		
+	public ResponseEntity<?> getuser(@RequestParam String username){	
 		System.out.println(username);
 		
 		UserInfo param = new UserInfo();
@@ -89,6 +72,7 @@ public class AuthController {
 		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
 	
+	//로그인
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Validated @RequestBody LoginRequest loginRequest){
 		
@@ -103,13 +87,8 @@ public class AuthController {
 		User user = (User) authentication.getPrincipal();
 		logger.info("dddd" + authentication.getPrincipal());
 		List<String> roles = user.getAuthorities().stream()
-			
 				.map(item -> item.getAuthority())
-								.collect(Collectors.toList());
-		
-//		String username = loginRequest.getUsername();
-//		//편의상 새로고침때 권한을 얻어오는 Mapper을 사용해줌.
-//		user.setAuthorities(userService.readAuthorities_refresh(username));
+				.collect(Collectors.toList());
 		
 		return ResponseEntity.ok(new JwtResponse(jwt,
 												user.getUsername(),
@@ -120,15 +99,14 @@ public class AuthController {
 												roles));
 	}
 	
+	//회원등록
 	@PostMapping("/signup")
 		public ResponseEntity<?> sinupUser(@Validated @RequestBody User user){
 		
 		int result = 0;
-		
 		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");	 
 	    String date = dateFormat.format(cal.getTime());
-		
 		
 		if(userService.duplicate(user) == null) {
 			String encodedPassword = new BCryptPasswordEncoder().encode(user.getPassword());
@@ -144,9 +122,7 @@ public class AuthController {
 			user.setAccountNonLocked(true);
 			user.setCredentialsNonExpired(true);
 			user.setAuthorities(AuthorityUtils.createAuthorityList("ROLE_USER"));
-			
-			user.setDate(date); //회원가입 축하 포인트에 사용될 날짜
-			
+			user.setDate(date); 
 			
 			result = userService.createUser(user);
 			userService.createAuthority(user);
@@ -155,15 +131,14 @@ public class AuthController {
 			if(result == 1) {
 				// 회원가입 축하 포인트 주는 로직 작성하기.
 				pointService.join(user);			
+			}	return new ResponseEntity<>("success", HttpStatus.OK);
+				
+		}	else{
+				return new ResponseEntity<>("duplicate", HttpStatus.OK);
 			}
-			
-			return new ResponseEntity<>("success", HttpStatus.OK);
-		}else{
-			return new ResponseEntity<>("duplicate", HttpStatus.OK);
 		}
 	
-	}
-	
+	//중복검사
 	@PostMapping("/duplicate")
 	public ResponseEntity<?> duplicate(@Validated @RequestBody User user){		
 
@@ -176,7 +151,8 @@ public class AuthController {
 		}
 		
 	}
-		
+	
+	//새로고침시 로그인 유지
 	@GetMapping("/unpackToken")
 	public ResponseEntity<?> unpackToken(HttpServletRequest request) {
 		System.out.println("체크");

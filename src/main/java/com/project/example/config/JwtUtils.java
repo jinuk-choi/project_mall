@@ -48,7 +48,6 @@ public class JwtUtils {
 		return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().getSubject();
 	}
 	
-	//Claim: 권리
 	 private static Claims getClaimsFormToken(String token) {
         return (Claims) Jwts.parser().setSigningKey(DatatypeConverter.parseBase64Binary(jwtSecret))
         		.parseClaimsJws(token).getBody();

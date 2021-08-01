@@ -12,20 +12,14 @@ public class Order {
 	private String user_id; //주문정보 user_id (주문한 사람의 아이디)
 	private List<String> productList;  //상품정보 o_id에 해당하는 od_product들을 담고있을 리스트 
 	
-	
 	private DateInfo dateinfo; //주문정보를 받을 객체
-	
-	
 	private String name; //사용자정보 user_name (주문한 사람의 이름)
 	private String phone; //사용자정보 user_phone
 	private String address; //사용자정보 user_address
-	
-	
 	private String code; //상품코드 p_id
 	private String product; //상품명 p_name
 	private String price; //상품정보 p_price
-	private String image; //상품정보 pi_image , 너무 복잡해져서 우선은 임시로 od_image로 대체함.
-	
+	private String image; //상품정보 pi_image
 	
 	private List<OrderDetail> orderdetail;
 	private UserInfo user;
@@ -118,7 +112,6 @@ public class Order {
 	public void setPrice(String price) {
 		this.price = price;
 	}
-
 
 	public int getId() {
 		return id;

@@ -3,13 +3,10 @@ package com.project.example.domain;
 public class DateInfo {
 	
 	private DateInfo dateinfo;
-	
+
 	public String date1;
 	public String date2;
-	
-	
 	public String name; //날짜에 의한 검색을 하는 경우 제품의 이름도 편의상 dateinfo에서 받도록함.
-	
 	public String day;
 	public String day1;
 	public String day2;

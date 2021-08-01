@@ -12,9 +12,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 
-//이 클래스는 WebSecurityConfig.java 클래스에서 처음에 셋팅을 할때 
-//에러가 발생하면 에러처리를 하기 위해 사용되는 클래스이다. 실제로 WebSecurityConfig.java클래스에 AuthEntryPointJwt 객체가 생성되어 있고,
-//에러처리 부분에 AuthEntryPointJwt객체가 들어가 있음을 볼수 있다.
+//WebSecurityConfig.java 클래스에서 셋팅 될시 에러가 발생하면 에러처리를 하기 위해 사용된다. 
 
 @Component 
 public class AuthEntryPointJwt implements AuthenticationEntryPoint {

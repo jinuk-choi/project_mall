@@ -10,7 +10,6 @@ public class Point {
 	public String total_point;  //po_total_point
 	public String date; // po_date
 	
-	
 	public String getDate() {
 		return date;
 	}
