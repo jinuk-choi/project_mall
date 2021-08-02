@@ -19,6 +19,8 @@ public interface OrderMapper {
 
 	public void updateOrderDetail(OrderDetail orderdetail);
 	
+	
+	
 	public List<Order> readSales_days(DateInfo dateinfo);
 	
 	public List<Order> readSales_oneday(DateInfo dateinfo);

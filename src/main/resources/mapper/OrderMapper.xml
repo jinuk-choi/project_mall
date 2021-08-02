@@ -31,6 +31,7 @@
 		<collection property="orderdetail" resultMap="OrderDetail"></collection>
 	</resultMap>
 
+<!-- 매출 통계 -->
 	<select id="readSales_year" parameterType="Dateinfo" resultMap="OrderMap">
 			SELECT		*
 						FROM			
@@ -185,8 +186,7 @@
 					)tb
 	</select>
 
-
-
+<!-- 주문 내역 -->
 	<delete id="orderDetailDelete" parameterType="Order">
 		DELETE FROM order_detail where od_id=#{o_id}
 	</delete>
@@ -198,6 +198,20 @@
 					
 						where od_id = #{od_id}	
 	</update>
+	
+	<insert id="insertOrder" parameterType="Order" >      
+		INSERT INTO orders (
+			user_id, 
+			total_price, 
+			o_state, 
+			o_date
+		) VALUES (
+			#{user_id}, 
+			#{total_price}, 
+			#{state}, 
+			#{date}
+		)
+	</insert>
 
 	<select id="readOrder" parameterType="Order" resultMap="OrderMap">
 		SELECT		    ta.o_id,

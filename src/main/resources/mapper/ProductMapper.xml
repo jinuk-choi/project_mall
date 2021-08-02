@@ -271,7 +271,7 @@
 		)
 	</insert>
 
-	<!-- id로 입력한 값이 product_img에도 id로 일단은 입력되도록 설정함. -->
+
 	<insert id="createImage" parameterType="Product" >      
 		INSERT INTO product_img (
 			p_id, 
