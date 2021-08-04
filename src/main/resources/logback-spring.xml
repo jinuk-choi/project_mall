@@ -10,7 +10,7 @@
 	
 	<!-- 로그 파일로 남기는 설정 -->
 	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>/sts-logs/error.log</file>
+		<file>/home/ec2-user/sts-logs/error.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<fileNamePattern>sts-logs/error_%d{yyyy-MM-dd}.log</fileNamePattern>
 			<maxHistory>7</maxHistory>
