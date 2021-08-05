@@ -16,7 +16,6 @@ import com.project.example.service.KakaoService;
 @RestController
 @RequestMapping("/")
 public class KakaoController {
-	
 	@Autowired
     private KakaoService kakao;
     
@@ -32,6 +31,15 @@ public class KakaoController {
 	        session.setAttribute("userId", userInfo.get("email"));
 	        session.setAttribute("access_Token", access_Token);
 	    }
-	    return userInfo;
+	    	return userInfo;
 	}
+	
+//	@PostMapping("/klogout")
+//	public String klogout(HttpSession session) {
+//	    kakao.kakaoLogout((String)session.getAttribute("access_Token"));
+//	    session.removeAttribute("access_Token");
+//	    session.removeAttribute("userId");
+//	    return userInfo;
+//	}
+
 }
