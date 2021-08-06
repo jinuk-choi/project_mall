@@ -64,7 +64,7 @@ public class AuthTokenFilter extends OncePerRequestFilter{
 		private String parseJwt(HttpServletRequest request) {
 			
 			String headerAuth = request.getHeader("Authorization");
-			
+	
 			if(StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer ")) {
 			//대부분 토큰 앞에 "Bearer "을 붙여줌, 그래서 "Bearer "을 제거하기 위해 substring(7)을 해줌.
 				return headerAuth.substring(7, headerAuth.length());

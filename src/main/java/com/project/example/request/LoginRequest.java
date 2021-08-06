@@ -4,6 +4,7 @@ public class LoginRequest {
 	
 	private String username;
 	private String password;
+	private String jwt;
 	
 	public String getUsername() {
 		return username;
@@ -18,6 +19,12 @@ public class LoginRequest {
 		this.password = password;
 	}
 	
+	public String getJwt() {
+		return jwt;
+	}
+	public void setJwt(String jwt) {
+		this.jwt = jwt;
+	}
 	@Override
 	public String toString() {
 		return "LoginRequest [username=" + username + ", password=" + password + "]";

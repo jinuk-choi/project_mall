@@ -82,8 +82,12 @@ public class AuthController {
 				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 		
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-		String jwt = jwtUtils.generateJwtToken(authentication);
-				
+	
+		String jwt = loginRequest.getJwt();
+			if (jwt == null) {
+				jwt = jwtUtils.generateJwtToken(authentication);
+			}
+		
 		User user = (User) authentication.getPrincipal();
 		logger.info("dddd" + authentication.getPrincipal());
 		List<String> roles = user.getAuthorities().stream()
