@@ -161,7 +161,7 @@ public class AdminController {
 		return new ResponseEntity<>(categoryList, HttpStatus.OK);
 	}
 	
-	//카테고리정보 불러오기
+	//카테고리 추가
 	@PostMapping("/categoryadd")
 	public ResponseEntity<?> categoryAdd(@Validated @RequestBody Category category){
 		System.out.println(category.getName()+"wjflwejfkljwlekfjkl");

@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
@@ -24,8 +23,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.example.config.JwtUtils;
 import com.project.example.domain.Board;
+import com.project.example.domain.Category;
 import com.project.example.domain.Comment;
 import com.project.example.domain.ListVo;
+import com.project.example.domain.Order;
+import com.project.example.domain.OrderDetail;
 import com.project.example.domain.Pagination;
 import com.project.example.domain.Product;
 import com.project.example.domain.Search;
@@ -299,6 +301,14 @@ public class UserController {
 		
 		return new ResponseEntity<>(pagination, HttpStatus.OK);
 	}
+	
+	//주문하기
+		@PostMapping("/Order")
+		public ResponseEntity<?> categoryAdd(@RequestBody Order order){
+			
+			List<Category> categoryList = categoryService.readCategory();
+			return new ResponseEntity<>(categoryList, HttpStatus.OK);
+		}
 	
 	
 	
