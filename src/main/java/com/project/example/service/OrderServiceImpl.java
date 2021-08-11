@@ -25,6 +25,11 @@ public class OrderServiceImpl implements OrderService{
 	public Order readOrderDetails(Order order){
 		return ordermapper.readOrderDetails(order);
 	}
+	
+	@Override
+	public List<Order> orderListDetail(Order order){
+		return ordermapper.orderListDetail(order);
+	}
 
 	@Override
 	public void orderDetailDelete(OrderDetail orderdetail) {
@@ -55,5 +60,13 @@ public class OrderServiceImpl implements OrderService{
 	public List<Order> readSales_year(DateInfo dateinfo){
 		return ordermapper.readSales_year(dateinfo);
 	}
+	
+	@Override
+	public void orderList(Order order){
+		ordermapper.orderList(order);
+		ordermapper.order_detailList(order);
+	}
+	
+	
 	
 }

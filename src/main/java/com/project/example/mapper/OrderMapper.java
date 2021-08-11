@@ -15,11 +15,11 @@ public interface OrderMapper {
 
 	public Order readOrderDetails(Order order);
 	
+	public List<Order>  orderListDetail(Order order);
+	
 	public void orderDetailDelete(OrderDetail orderdetail);
 
 	public void updateOrderDetail(OrderDetail orderdetail);
-	
-	
 	
 	public List<Order> readSales_days(DateInfo dateinfo);
 	
@@ -28,5 +28,9 @@ public interface OrderMapper {
 	public List<Order> readSales_month(DateInfo dateinfo);
 	
 	public List<Order> readSales_year(DateInfo dateinfo);
+	
+	public void orderList(Order order);
+	
+	public void order_detailList(Order order);
 	
 }

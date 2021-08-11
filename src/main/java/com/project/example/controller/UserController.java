@@ -303,13 +303,17 @@ public class UserController {
 	}
 	
 	//주문하기
-		@PostMapping("/Order")
-		public ResponseEntity<?> categoryAdd(@RequestBody Order order){
-			
-			List<Category> categoryList = categoryService.readCategory();
-			return new ResponseEntity<>(categoryList, HttpStatus.OK);
-		}
+	@PostMapping("/Order")
+	public ResponseEntity<?> OrderList(@RequestBody Order order){
+		orderService.orderList(order);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 	
-	
-	
+	//주문내역 불러오기
+	@PostMapping("/orderListDetail")
+	public ResponseEntity<?> orderListDetail(@Validated @RequestBody Order order){
+		List<Order>  orderDetail = orderService.orderListDetail(order);
+		System.out.println(orderDetail.toString());
+		return new ResponseEntity<>(orderDetail, HttpStatus.OK);
+	}
 }

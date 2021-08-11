@@ -11,6 +11,8 @@ public interface OrderService {
 	public List<Order> readOrder();
 	
 	public Order readOrderDetails(Order order);
+	
+	public List<Order>  orderListDetail(Order order);
 
 	public void orderDetailDelete(OrderDetail orderdetail);
 	
@@ -23,4 +25,6 @@ public interface OrderService {
 	public List<Order> readSales_month(DateInfo dateinfo);
 	
 	public List<Order> readSales_year(DateInfo dateinfo);
+	
+	public void orderList(Order order);
 }
