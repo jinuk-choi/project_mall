@@ -36,7 +36,8 @@ public class KakaoService {
 			    StringBuilder sb = new StringBuilder();
 			    sb.append("grant_type=authorization_code");
 			    sb.append("&client_id=60fe433722c3b3c6083b42fe8cd72063");
-			    sb.append("&redirect_uri=http://localhost:8080/klogin");
+			  //sb.append("&redirect_uri=http://localhost:8080/klogin");
+			    sb.append("&redirect_uri=http://yosinsa.com:9100/klogin");
 			    sb.append("&code=" + authorize_code);
 			    bw.write(sb.toString());
 			    bw.flush();
@@ -117,38 +118,9 @@ public class KakaoService {
 	        // TODO Auto-generated catch block
 	        e.printStackTrace();
 	    }
-	    
-	    return userInfo;
+	   		return userInfo;
 	}
 	
-	public void kakaoLogout(String access_Token) {
-	    String reqURL = "https://kapi.kakao.com/v1/user/logout";
-	    try {
-	        URL url = new URL(reqURL);
-	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-	        conn.setRequestMethod("POST");
-	        conn.setRequestProperty("Authorization", "Bearer " + access_Token);
-	        
-	        int responseCode = conn.getResponseCode();
-	        System.out.println("responseCode : " + responseCode);
-	        
-	        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-	        
-	        String result = "";
-	        String line = "";
-	        
-	        while ((line = br.readLine()) != null) {
-	            result += line;
-	        }
-	        System.out.println(result);
-	    } catch (IOException e) {
-	        // TODO Auto-generated catch block
-	        e.printStackTrace();
-	    }
-	}
-
-	 
-	 
 }
 
 

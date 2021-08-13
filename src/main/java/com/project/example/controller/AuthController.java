@@ -175,36 +175,5 @@ public class AuthController {
 		
 	}
 	
-	//로그인
-//		@PostMapping("/signin")
-//		public ResponseEntity<?> authenticateUser(@Validated @RequestBody LoginRequest loginRequest){
-//			
-//			logger.info("test" + loginRequest);
-//			
-//			Authentication authentication = authenticationManager.authenticate(
-//					new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
-//			
-//			SecurityContextHolder.getContext().setAuthentication(authentication);
-//		
-//			String jwt = loginRequest.getJwt();
-//				if (jwt == null) {
-//					jwt = jwtUtils.generateJwtToken(authentication);
-//				}
-//			
-//			User user = (User) authentication.getPrincipal();
-//			logger.info("dddd" + authentication.getPrincipal());
-//			List<String> roles = user.getAuthorities().stream()
-//					.map(item -> item.getAuthority())
-//					.collect(Collectors.toList());
-//			
-//			return ResponseEntity.ok(new JwtResponse(jwt,
-//													user.getUsername(),
-//													user.getName(),
-//													user.getPhone(),
-//													user.getAddress(),
-//													user.getEmail(),
-//													roles));
-//		}
-	
 	
 }

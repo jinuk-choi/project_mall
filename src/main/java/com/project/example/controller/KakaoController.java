@@ -5,22 +5,23 @@ import java.util.HashMap;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.example.service.KakaoService;
 
-@RestController
-@RequestMapping("/")
+@Controller
 public class KakaoController {
 	@Autowired
     private KakaoService kakao;
     
-	@PostMapping("/klogin")
-	public HashMap<String, Object> klogin(@RequestParam String authorize_code, HttpSession session) {
+	@RequestMapping(value="/klogin")
+	public HashMap<String, Object> klogin(@RequestParam("authorize_code") String authorize_code, HttpSession session) {
 	    String access_Token = kakao.getAccessToken(authorize_code);
 	    HashMap<String, Object> userInfo = kakao.getUserInfo(access_Token);
 	    
@@ -35,12 +36,4 @@ public class KakaoController {
 	    	return userInfo;
 	}
 	
-//	@PostMapping("/klogout")
-//	public String klogout(HttpSession session) {
-//	    kakao.kakaoLogout((String)session.getAttribute("access_Token"));
-//	    session.removeAttribute("access_Token");
-//	    session.removeAttribute("userId");
-//	    return userInfo;
-//	}
-
 }
