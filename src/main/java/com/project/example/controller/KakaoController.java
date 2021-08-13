@@ -15,12 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.example.service.KakaoService;
 
-@Controller
+@RestController
+@RequestMapping("/")
 public class KakaoController {
 	@Autowired
     private KakaoService kakao;
     
-	@RequestMapping(value="/klogin")
+	@PostMapping("/klogin")
 	public HashMap<String, Object> klogin(@RequestParam("authorize_code") String authorize_code, HttpSession session) {
 	    String access_Token = kakao.getAccessToken(authorize_code);
 	    HashMap<String, Object> userInfo = kakao.getUserInfo(access_Token);
