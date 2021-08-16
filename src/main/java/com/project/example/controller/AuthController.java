@@ -34,7 +34,6 @@ import com.project.example.domain.User;
 import com.project.example.domain.UserInfo;
 import com.project.example.request.LoginRequest;
 import com.project.example.response.JwtResponse;
-import com.project.example.service.PointService;
 import com.project.example.service.UserService;
 
 @CrossOrigin(origins= "*", maxAge = 3600)
@@ -54,10 +53,6 @@ public class AuthController {
 	
 	@Autowired
 	UserService userService;
-	
-	
-	@Autowired
-	PointService pointService;
 	
 	//로그인시 사용자 조회
 	@GetMapping("/getuser")
@@ -132,12 +127,8 @@ public class AuthController {
 			result = userService.createUser(user);
 			userService.createAuthority(user);
 			
-			//회원가입이 성공 되었을 때만, 회원가입 축하 포인트를 줌.
-			if(result == 1) {
-				// 회원가입 축하 포인트 주는 로직 작성하기.
-				pointService.join(user);			
-			}	return new ResponseEntity<>("success", HttpStatus.OK);
-				
+			return new ResponseEntity<>("success", HttpStatus.OK);
+			
 		}	else{
 				return new ResponseEntity<>("duplicate", HttpStatus.OK);
 			}

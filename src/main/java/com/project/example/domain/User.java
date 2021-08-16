@@ -18,7 +18,6 @@ public class User implements UserDetails{
 	private String phone;
 	private String address;
 	private String email;
-	private String point; 
 	private String uDateTime;
 	private Collection<? extends GrantedAuthority> authorities;
 	private boolean isAccountNonExpired;
@@ -99,14 +98,6 @@ public class User implements UserDetails{
 
 	public void setAddress(String address) {
 		this.address = address;
-	}
-
-	public String getPoint() {
-		return point;
-	}
-
-	public void setPoint(String point) {
-		this.point = point;
 	}
 
 	public String getuDateTime() {

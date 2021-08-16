@@ -50,8 +50,7 @@
 						user_name = #{name},
 						user_address = #{address},
 						user_phone = #{phone},
-						user_email = #{email},
-						user_point = #{point}
+						user_email = #{email}
 						
 						where user_id= #{temp}
 		
@@ -64,8 +63,8 @@
 						user_name										as	    name,
 						user_address          		                    as      address,
 						user_phone										as		phone,
-						user_email                   		            as      email,
-						user_point                      	            as      point
+						user_email                   		            as      email
+			
 		FROM			user
 	</select>
 	

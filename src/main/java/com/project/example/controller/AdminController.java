@@ -10,10 +10,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
-
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,19 +30,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.project.example.config.JwtUtils;
 import com.project.example.domain.Category;
 import com.project.example.domain.DateInfo;
 import com.project.example.domain.Order;
 import com.project.example.domain.OrderDetail;
-import com.project.example.domain.Point;
 import com.project.example.domain.Product;
 import com.project.example.domain.UserInfo;
 import com.project.example.service.BoardService;
 import com.project.example.service.CategoryService;
 import com.project.example.service.OrderService;
-import com.project.example.service.PointService;
 import com.project.example.service.ProductService;
 import com.project.example.service.UserService;
 
@@ -81,9 +76,6 @@ public class AdminController {
 	@Autowired
 	OrderService orderService;
 
-	@Autowired
-	PointService pointService;
-	
 	//회원정보 불러오기
 	@GetMapping("/userlist")
 	public ResponseEntity<?> read_user(){
@@ -108,42 +100,6 @@ public class AdminController {
 		userService.updateUser(userinfo);
 		List<UserInfo> userList = userService.shopping_readUser();
 		return new ResponseEntity<>(userList, HttpStatus.OK);
-	}
-	
-	//포인트정보 불러오기
-	@GetMapping("/point")
-	public ResponseEntity<?> point(){
-		List<Point> point = pointService.read_point();
-		return new ResponseEntity<>(point, HttpStatus.OK);
-	}
-	
-	//포인트 내역추가
-	@PostMapping("/pointadd")
-	public ResponseEntity<?> pointadd(@Validated @RequestBody Point point){
-		
-		//회원 아이디가 없는 경우 에러를 반환한다.
-		if(pointService.checkId(point) == null) {
-			return new ResponseEntity<>("error", HttpStatus.OK);
-		//회원 아이디가 있는 경우	
-		}else {
-			Point sum = new Point();
-			sum = pointService.sumPointById(point);
-			
-			Calendar cal = Calendar.getInstance();
-			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");	 
-		    String date = dateFormat.format(cal.getTime());
-			
-			int temp_total = Integer.parseInt(sum.getTotal_point()) + Integer.parseInt(point.getPoint()); 
-			String total = Integer.toString(temp_total);
-					
-			point.setDate(date);
-			point.setTotal_point(total);
-			point.setName(sum.getName());
-
-			pointService.createPoint(point);
-			
-			return new ResponseEntity<>("success", HttpStatus.OK);			
-		}
 	}
 	
 	//카테고리정보 불러오기
