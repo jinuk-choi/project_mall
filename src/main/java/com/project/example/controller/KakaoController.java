@@ -1,22 +1,37 @@
 package com.project.example.controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.project.example.domain.KakaoPayApprovalVO;
+import com.project.example.domain.Order;
+import com.project.example.service.KakaoPay;
 import com.project.example.service.KakaoService;
+
+import lombok.Setter;
 
 @RestController
 @RequestMapping("/")
 public class KakaoController {
+	
 	@Autowired
     private KakaoService kakao;
+	
+	@Autowired
+    private KakaoPay kakaopay;
     
 	@PostMapping("/klogin")
 	public HashMap<String, Object> klogin(@RequestParam("authorize_code") String authorize_code, HttpSession session) {
@@ -33,6 +48,30 @@ public class KakaoController {
 	    }
 	    	return userInfo;
 	}
+	
+	@GetMapping("/kakaoPay")
+    public void kakaoPayGet() {
+        
+    }
+    
+    @PostMapping("/kakaoPay")
+    public String kakaoPay() {
+    	System.out.println("kakaoPay post............................................");
+        
+        return kakaopay.kakaoPayReady();
+ 
+    }
+    
+    @GetMapping("/kakaoPaySuccess")
+    public ResponseEntity<?> kakaoPaySuccess(@RequestParam("pg_token") String pg_token) {
+    	System.out.println("kakaoPaySuccess get............................................");
+    	System.out.println("kakaoPaySuccess pg_token : " + pg_token);
+    	
+    	KakaoPayApprovalVO params =kakaopay.kakaoPayInfo(pg_token);
+    	return new ResponseEntity<>(params, HttpStatus.OK);
+        
+        
+    }
 	
 	
 	
