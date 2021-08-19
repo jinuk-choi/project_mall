@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -56,14 +57,16 @@ public class KakaoController {
     
     @PostMapping("/kakaoPay")
     public String kakaoPay() {
-    	System.out.println("kakaoPay post............................................");
+    	
+    	System.out.println("kakaoPay post........................");
         
         return kakaopay.kakaoPayReady();
  
     }
     
     @GetMapping("/kakaoPaySuccess")
-    public ResponseEntity<?> kakaoPaySuccess(@RequestParam("pg_token") String pg_token) {
+    public ResponseEntity<?> kakaoPaySuccess(@RequestParam("pg_token") String pg_token
+    																   ) {
     	System.out.println("kakaoPaySuccess get............................................");
     	System.out.println("kakaoPaySuccess pg_token : " + pg_token);
     	

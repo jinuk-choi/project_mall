@@ -20,6 +20,7 @@ public class Order {
 	private String product; //상품명 p_name
 	private String price; //상품정보 p_price
 	private String image; //상품정보 pi_image
+	private String count; //상품 수량
 	
 	private List<OrderDetail> orderdetail;
 	private UserInfo user;
@@ -142,6 +143,12 @@ public class Order {
 	}
 	public void setDateinfo(DateInfo dateinfo) {
 		this.dateinfo = dateinfo;
+	}
+	public String getCount() {
+		return count;
+	}
+	public void setCount(String count) {
+		this.count = count;
 	}
 	@Override
 	public String toString() {

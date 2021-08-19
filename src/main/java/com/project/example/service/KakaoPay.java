@@ -15,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.project.example.domain.KakaoPayApprovalVO;
 import com.project.example.domain.KakaoPayReadyVO;
+import com.project.example.domain.Order;
 
 import lombok.extern.java.Log;
 
@@ -31,7 +32,15 @@ public class KakaoPay {
     public String kakaoPayReady() {
  
         RestTemplate restTemplate = new RestTemplate();
- 
+        
+        String dns = "http://localhost:8080";
+        //String dns = "http://yosinsa.com";
+        
+//        int price = Integer.parseInt(order.getPrice());
+//        int count = Integer.parseInt(order.getCount());
+//        int total = price * count;
+       
+        
         // 서버로 요청할 Header
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "KakaoAK " + "2f4f3a2e204b0dfbafa3542bb663c25d");
@@ -43,13 +52,13 @@ public class KakaoPay {
         params.add("cid", "TC0ONETIME");
         params.add("partner_order_id", "1001");
         params.add("partner_user_id", "gorany");
-        params.add("item_name", "갤럭시S9");
+        params.add("item_name", "ㅇ");
         params.add("quantity", "1");
         params.add("total_amount", "2100");
         params.add("tax_free_amount", "100");
-        params.add("approval_url", "http://localhost:8080/kakaoPaySuccess");
-        params.add("cancel_url", "http://localhost:8080/kakaoPayCancel");
-        params.add("fail_url", "http://localhost:8080/kakaoPaySuccessFail");
+        params.add("approval_url", dns + "/kakaoPaySuccess");
+        params.add("cancel_url", dns + "/kakaoPayCancel");
+        params.add("fail_url", dns + "/kakaoPaySuccessFail");
  
          HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
  
@@ -74,7 +83,9 @@ public class KakaoPay {
     public KakaoPayApprovalVO kakaoPayInfo(String pg_token) {
     	 
         RestTemplate restTemplate = new RestTemplate();
- 
+        
+        
+        
         // 서버로 요청할 Header
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "KakaoAK " + "2f4f3a2e204b0dfbafa3542bb663c25d");
@@ -88,7 +99,7 @@ public class KakaoPay {
         params.add("partner_order_id", "1001");
         params.add("partner_user_id", "gorany");
         params.add("pg_token", pg_token);
-        params.add("total_amount", "2100");
+        params.add("total_amount", "2100" );
         
         HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
         
