@@ -29,7 +29,7 @@ public class KakaoPay {
     private KakaoPayReadyVO kakaoPayReadyVO;
     private KakaoPayApprovalVO kakaoPayApprovalVO;
     
-    public String kakaoPayReady() {
+    public String kakaoPayReady(Order order) {
  
         RestTemplate restTemplate = new RestTemplate();
         
@@ -52,9 +52,9 @@ public class KakaoPay {
         params.add("cid", "TC0ONETIME");
         params.add("partner_order_id", "1001");
         params.add("partner_user_id", "gorany");
-        params.add("item_name", "ㅇ");
+        params.add("item_name", "YOSINSA");
         params.add("quantity", "1");
-        params.add("total_amount", "2100");
+        params.add("total_amount", Integer.toString(order.getTotal_price()));
         params.add("tax_free_amount", "100");
         params.add("approval_url", dns + "/kakaoPaySuccess");
         params.add("cancel_url", dns + "/kakaoPayCancel");
@@ -83,8 +83,6 @@ public class KakaoPay {
     public KakaoPayApprovalVO kakaoPayInfo(String pg_token) {
     	 
         RestTemplate restTemplate = new RestTemplate();
-        
-        
         
         // 서버로 요청할 Header
         HttpHeaders headers = new HttpHeaders();

@@ -21,6 +21,7 @@
 	
 	<resultMap id="OrderMap" type="Order">
 		<result column="o_id" property="id" />
+		<result column="o_state" property="state" />
 		<result column="o_date" property="date" />
 		<result column="o_order_price" property="order_price" />
 		<result column="o_total_price" property="total_price" />
@@ -203,10 +204,12 @@
 			user_id, 
 			total_price, 
 			o_date
+			o_state
 		) VALUES (
 			#{user_id}, 
 			#{total_price}, 
-			#{date}
+			#{date},
+			#{state}
 		)
 	</insert>
 
@@ -232,6 +235,7 @@
 						tb.o_id,
 						ta.o_date,
 						ta.o_id,
+						ta.o_state,
 						tc.user_name,
 						tc.user_address,
 						tc.user_phone,
@@ -267,6 +271,7 @@
 						ta.o_date,
 						ta.o_id,
 						ta.user_id,
+						ta.o_state,
 						tc.user_name,
 						tc.user_address,
 						tc.user_phone,
@@ -295,9 +300,13 @@
 <!-- 주문 하기 -->
 	<insert id="orderList" parameterType="Order" >      
 		INSERT INTO orders (
-			user_id
+			user_id,
+			o_total_price,
+			o_state
 		) VALUES (
-			#{user_id}
+			#{user_id},
+			#{total_price},
+			#{state}
 		)
 		<selectKey keyProperty="id" resultType="Integer">
 	        SELECT LAST_INSERT_ID()

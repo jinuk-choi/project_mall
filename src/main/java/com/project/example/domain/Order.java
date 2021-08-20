@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Order {
 
-	private String state;//주문상태 o_state 
+	private String state;//결제상태 o_state 
 	private int id; //주문정보 o_id
 	private int total_price; //주문정보 o_total_price
 	private int order_price; //주문정보 o_order_price

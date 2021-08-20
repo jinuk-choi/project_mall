@@ -21,6 +21,7 @@ import com.project.example.domain.KakaoPayApprovalVO;
 import com.project.example.domain.Order;
 import com.project.example.service.KakaoPay;
 import com.project.example.service.KakaoService;
+import com.project.example.service.OrderService;
 
 import lombok.Setter;
 
@@ -33,6 +34,9 @@ public class KakaoController {
 	
 	@Autowired
     private KakaoPay kakaopay;
+	
+	@Autowired
+	OrderService orderService;
     
 	@PostMapping("/klogin")
 	public HashMap<String, Object> klogin(@RequestParam("authorize_code") String authorize_code, HttpSession session) {
@@ -56,11 +60,11 @@ public class KakaoController {
     }
     
     @PostMapping("/kakaoPay")
-    public String kakaoPay() {
-    	
+    public String kakaoPay(@RequestBody Order order) {
+    	Order orderDetail = orderService.readOrderDetails(order);
     	System.out.println("kakaoPay post........................");
         
-        return kakaopay.kakaoPayReady();
+        return kakaopay.kakaoPayReady(orderDetail);
  
     }
     
