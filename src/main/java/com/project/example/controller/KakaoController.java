@@ -69,12 +69,19 @@ public class KakaoController {
     }
     
     @GetMapping("/kakaoPaySuccess")
-    public ResponseEntity<?> kakaoPaySuccess(@RequestParam("pg_token") String pg_token
-    																   ) {
+    public ResponseEntity<?> kakaoPaySuccess( @RequestParam("id") int id,
+    										  @RequestParam("pg_token") String pg_token,
+    										  Order order) {
     	System.out.println("kakaoPaySuccess get............................................");
     	System.out.println("kakaoPaySuccess pg_token : " + pg_token);
+    	System.out.println("kakaoPaySuccess id : " + id);
     	
-    	KakaoPayApprovalVO params =kakaopay.kakaoPayInfo(pg_token);
+    	order.setId(id);
+    	Order orderDetail = orderService.readOrderDetails(order);
+    	
+    	KakaoPayApprovalVO params =kakaopay.kakaoPayInfo(pg_token,orderDetail);
+    	orderService.updateState(orderDetail);
+    	
     	return new ResponseEntity<>(params, HttpStatus.OK);
         
         

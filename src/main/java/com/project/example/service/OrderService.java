@@ -27,4 +27,8 @@ public interface OrderService {
 	public List<Order> readSales_year(DateInfo dateinfo);
 	
 	public void orderList(Order order);
+	
+	public void updateState(Order order);
+	
+	
 }

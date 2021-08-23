@@ -25,7 +25,6 @@ import lombok.extern.java.Log;
 public class KakaoPay {
  
     private static final String HOST = "https://kapi.kakao.com";
-    
     private KakaoPayReadyVO kakaoPayReadyVO;
     private KakaoPayApprovalVO kakaoPayApprovalVO;
     
@@ -33,8 +32,8 @@ public class KakaoPay {
  
         RestTemplate restTemplate = new RestTemplate();
         
-        String dns = "http://localhost:8080";
-        //String dns = "http://yosinsa.com";
+        //String dns = "http://localhost:8080";
+        String dns = "http://yosinsa.com";
         
 //        int price = Integer.parseInt(order.getPrice());
 //        int count = Integer.parseInt(order.getCount());
@@ -56,7 +55,7 @@ public class KakaoPay {
         params.add("quantity", "1");
         params.add("total_amount", Integer.toString(order.getTotal_price()));
         params.add("tax_free_amount", "100");
-        params.add("approval_url", dns + "/kakaoPaySuccess");
+        params.add("approval_url", dns + "/kakaoPaySuccess?id=" + Integer.toString(order.getId()));
         params.add("cancel_url", dns + "/kakaoPayCancel");
         params.add("fail_url", dns + "/kakaoPaySuccessFail");
  
@@ -80,7 +79,7 @@ public class KakaoPay {
         
     }
     
-    public KakaoPayApprovalVO kakaoPayInfo(String pg_token) {
+    public KakaoPayApprovalVO kakaoPayInfo(String pg_token, Order order) {
     	 
         RestTemplate restTemplate = new RestTemplate();
         
@@ -97,7 +96,7 @@ public class KakaoPay {
         params.add("partner_order_id", "1001");
         params.add("partner_user_id", "gorany");
         params.add("pg_token", pg_token);
-        params.add("total_amount", "2100" );
+        params.add("total_amount", Integer.toString(order.getTotal_price()) );
         
         HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
         

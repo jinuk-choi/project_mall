@@ -322,6 +322,11 @@
         	(#{id}, #{item.p_id}, #{item.price}, #{item.count})
         </foreach>
 	</insert>
+
+<!-- 결제하기 -->
+	<update id="updateState" parameterType="Order" >
+		UPDATE orders SET o_state = "결제완료" WHERE o_id = #{id}
+	</update>
 	
 	
 

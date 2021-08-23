@@ -67,6 +67,11 @@ public class OrderServiceImpl implements OrderService{
 		ordermapper.order_detailList(order);
 	}
 	
+	@Override
+	public void updateState(Order order){
+		ordermapper.updateState(order);
+	}
+	
 	
 	
 }

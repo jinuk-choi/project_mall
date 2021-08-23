@@ -33,4 +33,6 @@ public interface OrderMapper {
 	
 	public void order_detailList(Order order);
 	
+	public void updateState(Order order);
+	
 }
