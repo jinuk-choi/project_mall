@@ -32,12 +32,8 @@ public class KakaoPay {
  
         RestTemplate restTemplate = new RestTemplate();
         
-        //String dns = "http://localhost:8080";
-        String dns = "http://yosinsa.com";
-        
-//        int price = Integer.parseInt(order.getPrice());
-//        int count = Integer.parseInt(order.getCount());
-//        int total = price * count;
+        String dns = "http://localhost:8080";
+        //String dns = "http://yosinsa.com";
        
         
         // 서버로 요청할 Header
