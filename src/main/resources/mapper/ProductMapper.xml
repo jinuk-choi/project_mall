@@ -111,9 +111,7 @@
 	  
 	 </select>
 	 
-
-	 
-	 
+<!-- 기간별 판매 통계 -->
 	 <select id="salesbytime" parameterType="Category" resultType="Product">	
 		SELECT 			order_detail.p_id, 
 						sum(od_count) order_count, 
@@ -130,7 +128,7 @@
 		
 		group by p_id
 	</select>
-	 
+<!-- 항목별 판매 데이터 순위 -->
 	<select id="lowCgData" parameterType="int" resultType="Product">
 		SELECT 					ta.p_id AS id, 
 								tb.p_name as name, 
@@ -149,7 +147,7 @@
 		group by 				ta.p_id 
 	</select>
 	
-	
+<!-- 날짜별 판매 데이터 순위-->
 	<select id="CgData_Date" parameterType="Category" resultType="Product">
 		SELECT 				order_detail.p_id, 
 							sum(od_count) order_count, 

@@ -1,0 +1,381 @@
+08:58:54.766 INFO  --- [restartedMain] c.p.example.ProjectMallApplication : Starting ProjectMallApplication using Java 1.8.0_251 on DESKTOP-CFU9JOI with PID 22272 (C:\Users\l3-morning\Documents\work\project_mall\bin\main started by l3-morning in C:\Users\l3-morning\Documents\work\project_mall) 
+08:58:54.773 DEBUG --- [restartedMain] c.p.example.ProjectMallApplication : Running with Spring Boot v2.5.2, Spring v5.3.8 
+08:58:54.773 INFO  --- [restartedMain] c.p.example.ProjectMallApplication : The following profiles are active: local 
+08:58:56.381 DEBUG --- [restartedMain] c.p.example.config.AuthTokenFilter : Filter 'authenticationJwtTokenFilter' configured for use 
+08:58:56.944 INFO  --- [restartedMain] c.p.example.ProjectMallApplication : Started ProjectMallApplication in 2.702 seconds (JVM running for 3.546) 
+08:59:01.376 ERROR --- [http-nio-9100-exec-4] com.project.example.config.JwtUtils : JWT token is expired: JWT expired at 2021-08-25T12:57:17Z. Current time: 2021-08-26T08:59:01Z, a difference of 72104376 milliseconds.  Allowed clock skew: 0 milliseconds. 
+08:59:01.376 ERROR --- [http-nio-9100-exec-3] com.project.example.config.JwtUtils : JWT token is expired: JWT expired at 2021-08-25T12:57:17Z. Current time: 2021-08-26T08:59:01Z, a difference of 72104376 milliseconds.  Allowed clock skew: 0 milliseconds. 
+08:59:01.404 ERROR --- [http-nio-9100-exec-4] o.a.c.c.C.[.[.[.[dispatcherServlet] : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is io.jsonwebtoken.ExpiredJwtException: JWT expired at 2021-08-25T12:57:17Z. Current time: 2021-08-26T08:59:01Z, a difference of 72104399 milliseconds.  Allowed clock skew: 0 milliseconds.] with root cause 
+io.jsonwebtoken.ExpiredJwtException: JWT expired at 2021-08-25T12:57:17Z. Current time: 2021-08-26T08:59:01Z, a difference of 72104399 milliseconds.  Allowed clock skew: 0 milliseconds.
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:385)
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:481)
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseClaimsJws(DefaultJwtParser.java:541)
+	at com.project.example.config.JwtUtils.getClaimsFormToken(JwtUtils.java:53)
+	at com.project.example.config.JwtUtils.getUserEmailFromToken(JwtUtils.java:57)
+	at com.project.example.controller.AuthController.unpackToken(AuthController.java:161)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:197)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:141)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:894)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1063)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:228)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:190)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:113)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:190)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:327)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:121)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:115)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:105)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at com.project.example.config.AuthTokenFilter.doFilterInternal(AuthTokenFilter.java:60)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:190)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:190)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:163)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1723)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+08:59:01.668 DEBUG --- [http-nio-9100-exec-3] c.p.e.m.ProductMapper.imageByRank : ==>  Preparing: SELECT pi_unique AS image, ta.p_id as id, ta.order_count, tb.p_name AS name, tb.p_price as price FROM product_img LEFT JOIN (SELECT p_id, SUM(od_count) order_count FROM order_detail GROUP BY p_id) ta ON ta.p_id = product_img.p_id LEFT JOIN product tb ON tb.p_id = ta.p_id ORDER BY order_count DESC 
+08:59:01.690 DEBUG --- [http-nio-9100-exec-3] c.p.e.m.ProductMapper.imageByRank : ==> Parameters:  
+08:59:01.718 TRACE --- [http-nio-9100-exec-3] c.p.e.m.ProductMapper.imageByRank : <==    Columns: image, id, order_count, name, price 
+08:59:01.718 TRACE --- [http-nio-9100-exec-3] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210716_1038392, 5, 6, 흰색 셔츠, 15000 
+08:59:01.720 TRACE --- [http-nio-9100-exec-3] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210723_0932213, 17, 4, 검정색 반팔티셔츠, 10000 
+08:59:01.720 TRACE --- [http-nio-9100-exec-3] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210716_1041215, 8, 3, 검정 슬랙스, 30000 
+08:59:01.721 TRACE --- [http-nio-9100-exec-3] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210716_1038513, 6, 2, 회색 셔츠, 25000 
+08:59:01.721 TRACE --- [http-nio-9100-exec-3] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210723_0930534, 15, 2, 해골무늬 반팔티셔츠, 15000 
+08:59:01.721 TRACE --- [http-nio-9100-exec-3] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210715_1049258, 11, 2, 반바지2, 6000 
+08:59:01.721 TRACE --- [http-nio-9100-exec-3] c.p.e.m.ProductMapper.imageByRank : <==        Row: 2, 3, 1, 반팔티셔츠, 100 
+08:59:01.721 TRACE --- [http-nio-9100-exec-3] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210723_0930980, 14, 1, 페인팅 반팔티셔츠, 20000 
+08:59:01.721 TRACE --- [http-nio-9100-exec-3] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210716_1034622, null, null, null, null 
+08:59:01.722 TRACE --- [http-nio-9100-exec-3] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210716_103900, null, null, null, null 
+08:59:01.722 TRACE --- [http-nio-9100-exec-3] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210716_1042256, null, null, null, null 
+08:59:01.722 TRACE --- [http-nio-9100-exec-3] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210723_0931614, null, null, null, null 
+08:59:01.722 TRACE --- [http-nio-9100-exec-3] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210723_0934988, null, null, null, null 
+08:59:01.722 TRACE --- [http-nio-9100-exec-3] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210715_1053209, null, null, null, null 
+08:59:01.722 TRACE --- [http-nio-9100-exec-3] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210716_1042423, null, null, null, null 
+08:59:01.723 TRACE --- [http-nio-9100-exec-3] c.p.e.m.ProductMapper.imageByRank : <==        Row: 3, null, null, null, null 
+08:59:01.723 TRACE --- [http-nio-9100-exec-3] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210723_0933694, null, null, null, null 
+08:59:01.723 TRACE --- [http-nio-9100-exec-3] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210723_0935781, null, null, null, null 
+08:59:01.724 TRACE --- [http-nio-9100-exec-3] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210715_1047214, null, null, null, null 
+08:59:01.724 TRACE --- [http-nio-9100-exec-3] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210723_0935917, null, null, null, null 
+08:59:01.724 DEBUG --- [http-nio-9100-exec-3] c.p.e.m.ProductMapper.imageByRank : <==      Total: 20 
+08:59:05.150 INFO  --- [http-nio-9100-exec-6] c.p.e.controller.AuthController : testLoginRequest [username=c, password=1234] 
+08:59:05.234 DEBUG --- [http-nio-9100-exec-6] c.p.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT user_id as username, user_password as password, user_name as name, user_phone as phone, user_email as email, user_address as address, user_isAccountNonExpired as isAccountNonExpired, user_isAccountNonLocked as isAccountNonLocked, user_isCredentialNonExpired as isCredentialsNonExpired, user_isEnabled as isEnabled FROM user WHERE 1=1 AND user_id = ? 
+08:59:05.235 DEBUG --- [http-nio-9100-exec-6] c.p.e.mapper.UserMapper.readUser : ==> Parameters: c(String) 
+08:59:05.244 TRACE --- [http-nio-9100-exec-6] c.p.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, email, address, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+08:59:05.244 TRACE --- [http-nio-9100-exec-6] c.p.e.mapper.UserMapper.readUser : <==        Row: c, $2a$10$MFyFLUG1O7TunwTboC0JqOQR.jeam9T1SIaPN8R0oSP3o9GjSPAuW, 관리자, 010-1111-5555, c@naver.com, 청주, 1, 1, 1, 1 
+08:59:05.245 DEBUG --- [http-nio-9100-exec-6] c.p.e.mapper.UserMapper.readUser : <==      Total: 1 
+08:59:05.245 DEBUG --- [http-nio-9100-exec-6] c.p.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT user_auth FROM userauth WHERE 1=1 AND user_id = ? 
+08:59:05.245 DEBUG --- [http-nio-9100-exec-6] c.p.e.m.UserMapper.readAuthorities : ==> Parameters: c(String) 
+08:59:05.253 TRACE --- [http-nio-9100-exec-6] c.p.e.m.UserMapper.readAuthorities : <==    Columns: user_auth 
+08:59:05.254 TRACE --- [http-nio-9100-exec-6] c.p.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+08:59:05.258 DEBUG --- [http-nio-9100-exec-6] c.p.e.m.UserMapper.readAuthorities : <==      Total: 1 
+08:59:05.350 INFO  --- [http-nio-9100-exec-6] c.p.e.controller.AuthController : ddddcom.project.example.domain.User@75af664a 
+08:59:05.389 DEBUG --- [http-nio-9100-exec-7] c.p.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT user_id as username, user_password as password, user_name as name, user_phone as phone, user_email as email, user_address as address, user_isAccountNonExpired as isAccountNonExpired, user_isAccountNonLocked as isAccountNonLocked, user_isCredentialNonExpired as isCredentialsNonExpired, user_isEnabled as isEnabled FROM user WHERE 1=1 AND user_id = ? 
+08:59:05.390 DEBUG --- [http-nio-9100-exec-7] c.p.e.mapper.UserMapper.readUser : ==> Parameters: c(String) 
+08:59:05.398 TRACE --- [http-nio-9100-exec-7] c.p.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, email, address, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+08:59:05.398 TRACE --- [http-nio-9100-exec-7] c.p.e.mapper.UserMapper.readUser : <==        Row: c, $2a$10$MFyFLUG1O7TunwTboC0JqOQR.jeam9T1SIaPN8R0oSP3o9GjSPAuW, 관리자, 010-1111-5555, c@naver.com, 청주, 1, 1, 1, 1 
+08:59:05.398 DEBUG --- [http-nio-9100-exec-7] c.p.e.mapper.UserMapper.readUser : <==      Total: 1 
+08:59:05.399 DEBUG --- [http-nio-9100-exec-7] c.p.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT user_auth FROM userauth WHERE 1=1 AND user_id = ? 
+08:59:05.399 DEBUG --- [http-nio-9100-exec-7] c.p.e.m.UserMapper.readAuthorities : ==> Parameters: c(String) 
+08:59:05.406 TRACE --- [http-nio-9100-exec-7] c.p.e.m.UserMapper.readAuthorities : <==    Columns: user_auth 
+08:59:05.406 TRACE --- [http-nio-9100-exec-7] c.p.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+08:59:05.406 DEBUG --- [http-nio-9100-exec-7] c.p.e.m.UserMapper.readAuthorities : <==      Total: 1 
+08:59:05.407 DEBUG --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.imageByRank : ==>  Preparing: SELECT pi_unique AS image, ta.p_id as id, ta.order_count, tb.p_name AS name, tb.p_price as price FROM product_img LEFT JOIN (SELECT p_id, SUM(od_count) order_count FROM order_detail GROUP BY p_id) ta ON ta.p_id = product_img.p_id LEFT JOIN product tb ON tb.p_id = ta.p_id ORDER BY order_count DESC 
+08:59:05.407 DEBUG --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.imageByRank : ==> Parameters:  
+08:59:05.416 TRACE --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.imageByRank : <==    Columns: image, id, order_count, name, price 
+08:59:05.416 TRACE --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210716_1038392, 5, 6, 흰색 셔츠, 15000 
+08:59:05.416 TRACE --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210723_0932213, 17, 4, 검정색 반팔티셔츠, 10000 
+08:59:05.416 TRACE --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210716_1041215, 8, 3, 검정 슬랙스, 30000 
+08:59:05.416 TRACE --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210716_1038513, 6, 2, 회색 셔츠, 25000 
+08:59:05.416 TRACE --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210723_0930534, 15, 2, 해골무늬 반팔티셔츠, 15000 
+08:59:05.417 TRACE --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210715_1049258, 11, 2, 반바지2, 6000 
+08:59:05.417 TRACE --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.imageByRank : <==        Row: 2, 3, 1, 반팔티셔츠, 100 
+08:59:05.417 TRACE --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210723_0930980, 14, 1, 페인팅 반팔티셔츠, 20000 
+08:59:05.417 TRACE --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210716_1034622, null, null, null, null 
+08:59:05.418 TRACE --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210716_103900, null, null, null, null 
+08:59:05.418 TRACE --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210716_1042256, null, null, null, null 
+08:59:05.418 TRACE --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210723_0931614, null, null, null, null 
+08:59:05.418 TRACE --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210723_0934988, null, null, null, null 
+08:59:05.418 TRACE --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210715_1053209, null, null, null, null 
+08:59:05.418 TRACE --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210716_1042423, null, null, null, null 
+08:59:05.418 TRACE --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.imageByRank : <==        Row: 3, null, null, null, null 
+08:59:05.418 TRACE --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210723_0933694, null, null, null, null 
+08:59:05.418 TRACE --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210723_0935781, null, null, null, null 
+08:59:05.419 TRACE --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210715_1047214, null, null, null, null 
+08:59:05.419 TRACE --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.imageByRank : <==        Row: 20210723_0935917, null, null, null, null 
+08:59:05.419 DEBUG --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.imageByRank : <==      Total: 20 
+08:59:12.386 DEBUG --- [http-nio-9100-exec-2] c.p.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT user_id as username, user_password as password, user_name as name, user_phone as phone, user_email as email, user_address as address, user_isAccountNonExpired as isAccountNonExpired, user_isAccountNonLocked as isAccountNonLocked, user_isCredentialNonExpired as isCredentialsNonExpired, user_isEnabled as isEnabled FROM user WHERE 1=1 AND user_id = ? 
+08:59:12.386 DEBUG --- [http-nio-9100-exec-2] c.p.e.mapper.UserMapper.readUser : ==> Parameters: c(String) 
+08:59:12.389 DEBUG --- [http-nio-9100-exec-9] c.p.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT user_id as username, user_password as password, user_name as name, user_phone as phone, user_email as email, user_address as address, user_isAccountNonExpired as isAccountNonExpired, user_isAccountNonLocked as isAccountNonLocked, user_isCredentialNonExpired as isCredentialsNonExpired, user_isEnabled as isEnabled FROM user WHERE 1=1 AND user_id = ? 
+08:59:12.390 DEBUG --- [http-nio-9100-exec-9] c.p.e.mapper.UserMapper.readUser : ==> Parameters: c(String) 
+08:59:12.394 TRACE --- [http-nio-9100-exec-2] c.p.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, email, address, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+08:59:12.394 TRACE --- [http-nio-9100-exec-2] c.p.e.mapper.UserMapper.readUser : <==        Row: c, $2a$10$MFyFLUG1O7TunwTboC0JqOQR.jeam9T1SIaPN8R0oSP3o9GjSPAuW, 관리자, 010-1111-5555, c@naver.com, 청주, 1, 1, 1, 1 
+08:59:12.394 DEBUG --- [http-nio-9100-exec-2] c.p.e.mapper.UserMapper.readUser : <==      Total: 1 
+08:59:12.394 DEBUG --- [http-nio-9100-exec-2] c.p.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT user_auth FROM userauth WHERE 1=1 AND user_id = ? 
+08:59:12.395 DEBUG --- [http-nio-9100-exec-2] c.p.e.m.UserMapper.readAuthorities : ==> Parameters: c(String) 
+08:59:12.400 TRACE --- [http-nio-9100-exec-9] c.p.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, email, address, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+08:59:12.400 TRACE --- [http-nio-9100-exec-9] c.p.e.mapper.UserMapper.readUser : <==        Row: c, $2a$10$MFyFLUG1O7TunwTboC0JqOQR.jeam9T1SIaPN8R0oSP3o9GjSPAuW, 관리자, 010-1111-5555, c@naver.com, 청주, 1, 1, 1, 1 
+08:59:12.400 DEBUG --- [http-nio-9100-exec-9] c.p.e.mapper.UserMapper.readUser : <==      Total: 1 
+08:59:12.400 DEBUG --- [http-nio-9100-exec-9] c.p.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT user_auth FROM userauth WHERE 1=1 AND user_id = ? 
+08:59:12.400 DEBUG --- [http-nio-9100-exec-9] c.p.e.m.UserMapper.readAuthorities : ==> Parameters: c(String) 
+08:59:12.402 TRACE --- [http-nio-9100-exec-2] c.p.e.m.UserMapper.readAuthorities : <==    Columns: user_auth 
+08:59:12.402 TRACE --- [http-nio-9100-exec-2] c.p.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+08:59:12.402 DEBUG --- [http-nio-9100-exec-2] c.p.e.m.UserMapper.readAuthorities : <==      Total: 1 
+08:59:12.403 DEBUG --- [http-nio-9100-exec-2] c.p.e.m.C.readCategory_name : ==>  Preparing: SELECT cg_name as name FROM category WHERE CHAR_LENGTH(cg_id) <= 2 
+08:59:12.403 DEBUG --- [http-nio-9100-exec-2] c.p.e.m.C.readCategory_name : ==> Parameters:  
+08:59:12.410 TRACE --- [http-nio-9100-exec-9] c.p.e.m.UserMapper.readAuthorities : <==    Columns: user_auth 
+08:59:12.410 TRACE --- [http-nio-9100-exec-9] c.p.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+08:59:12.410 DEBUG --- [http-nio-9100-exec-9] c.p.e.m.UserMapper.readAuthorities : <==      Total: 1 
+08:59:12.410 TRACE --- [http-nio-9100-exec-2] c.p.e.m.C.readCategory_name : <==    Columns: name 
+08:59:12.410 TRACE --- [http-nio-9100-exec-2] c.p.e.m.C.readCategory_name : <==        Row: 전체 
+08:59:12.410 TRACE --- [http-nio-9100-exec-2] c.p.e.m.C.readCategory_name : <==        Row: 상의 
+08:59:12.410 TRACE --- [http-nio-9100-exec-2] c.p.e.m.C.readCategory_name : <==        Row: 하의 
+08:59:12.410 DEBUG --- [http-nio-9100-exec-2] c.p.e.m.C.readCategory_name : <==      Total: 3 
+08:59:12.411 DEBUG --- [http-nio-9100-exec-9] c.p.e.m.ProductMapper.lowCgData_all : ==>  Preparing: SELECT ta.p_id AS id, tb.p_name as name, sum(ta.od_count) AS order_count, tb.p_rank AS rank FROM order_detail ta LEFT JOIN product tb ON tb.p_id = ta.p_id group by ta.p_id 
+08:59:12.412 DEBUG --- [http-nio-9100-exec-9] c.p.e.m.ProductMapper.lowCgData_all : ==> Parameters:  
+08:59:12.422 TRACE --- [http-nio-9100-exec-9] c.p.e.m.ProductMapper.lowCgData_all : <==    Columns: id, name, order_count, rank 
+08:59:12.422 TRACE --- [http-nio-9100-exec-9] c.p.e.m.ProductMapper.lowCgData_all : <==        Row: 3, 반팔티셔츠, 1, null 
+08:59:12.423 TRACE --- [http-nio-9100-exec-9] c.p.e.m.ProductMapper.lowCgData_all : <==        Row: 5, 흰색 셔츠, 6, null 
+08:59:12.423 TRACE --- [http-nio-9100-exec-9] c.p.e.m.ProductMapper.lowCgData_all : <==        Row: 6, 회색 셔츠, 2, null 
+08:59:12.423 TRACE --- [http-nio-9100-exec-9] c.p.e.m.ProductMapper.lowCgData_all : <==        Row: 8, 검정 슬랙스, 3, null 
+08:59:12.423 TRACE --- [http-nio-9100-exec-9] c.p.e.m.ProductMapper.lowCgData_all : <==        Row: 11, 반바지2, 2, null 
+08:59:12.423 TRACE --- [http-nio-9100-exec-9] c.p.e.m.ProductMapper.lowCgData_all : <==        Row: 14, 페인팅 반팔티셔츠, 1, null 
+08:59:12.423 TRACE --- [http-nio-9100-exec-9] c.p.e.m.ProductMapper.lowCgData_all : <==        Row: 15, 해골무늬 반팔티셔츠, 2, null 
+08:59:12.423 TRACE --- [http-nio-9100-exec-9] c.p.e.m.ProductMapper.lowCgData_all : <==        Row: 17, 검정색 반팔티셔츠, 4, null 
+08:59:12.423 DEBUG --- [http-nio-9100-exec-9] c.p.e.m.ProductMapper.lowCgData_all : <==      Total: 8 
+09:00:07.235 DEBUG --- [http-nio-9100-exec-4] c.p.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT user_id as username, user_password as password, user_name as name, user_phone as phone, user_email as email, user_address as address, user_isAccountNonExpired as isAccountNonExpired, user_isAccountNonLocked as isAccountNonLocked, user_isCredentialNonExpired as isCredentialsNonExpired, user_isEnabled as isEnabled FROM user WHERE 1=1 AND user_id = ? 
+09:00:07.236 DEBUG --- [http-nio-9100-exec-4] c.p.e.mapper.UserMapper.readUser : ==> Parameters: c(String) 
+09:00:07.246 TRACE --- [http-nio-9100-exec-4] c.p.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, email, address, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+09:00:07.246 TRACE --- [http-nio-9100-exec-4] c.p.e.mapper.UserMapper.readUser : <==        Row: c, $2a$10$MFyFLUG1O7TunwTboC0JqOQR.jeam9T1SIaPN8R0oSP3o9GjSPAuW, 관리자, 010-1111-5555, c@naver.com, 청주, 1, 1, 1, 1 
+09:00:07.249 DEBUG --- [http-nio-9100-exec-4] c.p.e.mapper.UserMapper.readUser : <==      Total: 1 
+09:00:07.249 DEBUG --- [http-nio-9100-exec-4] c.p.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT user_auth FROM userauth WHERE 1=1 AND user_id = ? 
+09:00:07.251 DEBUG --- [http-nio-9100-exec-4] c.p.e.m.UserMapper.readAuthorities : ==> Parameters: c(String) 
+09:00:07.259 TRACE --- [http-nio-9100-exec-4] c.p.e.m.UserMapper.readAuthorities : <==    Columns: user_auth 
+09:00:07.260 TRACE --- [http-nio-9100-exec-4] c.p.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+09:00:07.260 DEBUG --- [http-nio-9100-exec-4] c.p.e.m.UserMapper.readAuthorities : <==      Total: 1 
+09:01:52.858 DEBUG --- [http-nio-9100-exec-4] c.p.e.m.CategoryMapper.findCg_id : ==>  Preparing: SELECT cg_id FROM category WHERE cg_name = ? 
+09:01:52.859 DEBUG --- [http-nio-9100-exec-4] c.p.e.m.CategoryMapper.findCg_id : ==> Parameters: 상의(String) 
+09:01:52.869 TRACE --- [http-nio-9100-exec-4] c.p.e.m.CategoryMapper.findCg_id : <==    Columns: cg_id 
+09:01:52.869 TRACE --- [http-nio-9100-exec-4] c.p.e.m.CategoryMapper.findCg_id : <==        Row: 10 
+09:01:52.873 DEBUG --- [http-nio-9100-exec-4] c.p.e.m.CategoryMapper.findCg_id : <==      Total: 1 
+09:01:52.875 DEBUG --- [http-nio-9100-exec-4] c.p.e.m.ProductMapper.lowCgData : ==>  Preparing: SELECT ta.p_id AS id, tb.p_name as name, sum(ta.od_count) AS order_count, tb.p_rank AS rank FROM order_detail ta JOIN (SELECT p_category, p_id, p_name, p_rank FROM product LEFT JOIN (SELECT cg_id as id FROM category WHERE cg_id LIKE CONCAT(?, '%')) ta ON 1=1 WHERE product.p_category= ta.id) tb ON ta.p_id = tb.p_id group by ta.p_id 
+09:01:52.878 DEBUG --- [http-nio-9100-exec-4] c.p.e.m.ProductMapper.lowCgData : ==> Parameters: 10(Integer) 
+09:01:52.894 TRACE --- [http-nio-9100-exec-4] c.p.e.m.ProductMapper.lowCgData : <==    Columns: id, name, order_count, rank 
+09:01:52.894 TRACE --- [http-nio-9100-exec-4] c.p.e.m.ProductMapper.lowCgData : <==        Row: 3, 반팔티셔츠, 1, null 
+09:01:52.896 TRACE --- [http-nio-9100-exec-4] c.p.e.m.ProductMapper.lowCgData : <==        Row: 5, 흰색 셔츠, 6, null 
+09:01:52.897 TRACE --- [http-nio-9100-exec-4] c.p.e.m.ProductMapper.lowCgData : <==        Row: 6, 회색 셔츠, 2, null 
+09:01:52.898 TRACE --- [http-nio-9100-exec-4] c.p.e.m.ProductMapper.lowCgData : <==        Row: 14, 페인팅 반팔티셔츠, 1, null 
+09:01:52.899 TRACE --- [http-nio-9100-exec-4] c.p.e.m.ProductMapper.lowCgData : <==        Row: 15, 해골무늬 반팔티셔츠, 2, null 
+09:01:52.899 TRACE --- [http-nio-9100-exec-4] c.p.e.m.ProductMapper.lowCgData : <==        Row: 17, 검정색 반팔티셔츠, 4, null 
+09:01:52.900 DEBUG --- [http-nio-9100-exec-4] c.p.e.m.ProductMapper.lowCgData : <==      Total: 6 
+09:01:57.867 DEBUG --- [http-nio-9100-exec-5] c.p.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT user_id as username, user_password as password, user_name as name, user_phone as phone, user_email as email, user_address as address, user_isAccountNonExpired as isAccountNonExpired, user_isAccountNonLocked as isAccountNonLocked, user_isCredentialNonExpired as isCredentialsNonExpired, user_isEnabled as isEnabled FROM user WHERE 1=1 AND user_id = ? 
+09:01:57.868 DEBUG --- [http-nio-9100-exec-5] c.p.e.mapper.UserMapper.readUser : ==> Parameters: c(String) 
+09:01:57.877 TRACE --- [http-nio-9100-exec-5] c.p.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, email, address, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+09:01:57.877 TRACE --- [http-nio-9100-exec-5] c.p.e.mapper.UserMapper.readUser : <==        Row: c, $2a$10$MFyFLUG1O7TunwTboC0JqOQR.jeam9T1SIaPN8R0oSP3o9GjSPAuW, 관리자, 010-1111-5555, c@naver.com, 청주, 1, 1, 1, 1 
+09:01:57.881 DEBUG --- [http-nio-9100-exec-5] c.p.e.mapper.UserMapper.readUser : <==      Total: 1 
+09:01:57.882 DEBUG --- [http-nio-9100-exec-5] c.p.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT user_auth FROM userauth WHERE 1=1 AND user_id = ? 
+09:01:57.882 DEBUG --- [http-nio-9100-exec-5] c.p.e.m.UserMapper.readAuthorities : ==> Parameters: c(String) 
+09:01:57.891 TRACE --- [http-nio-9100-exec-5] c.p.e.m.UserMapper.readAuthorities : <==    Columns: user_auth 
+09:01:57.891 TRACE --- [http-nio-9100-exec-5] c.p.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+09:01:57.891 DEBUG --- [http-nio-9100-exec-5] c.p.e.m.UserMapper.readAuthorities : <==      Total: 1 
+09:01:57.900 DEBUG --- [http-nio-9100-exec-5] c.p.e.m.CategoryMapper.findCg_id : ==>  Preparing: SELECT cg_id FROM category WHERE cg_name = ? 
+09:01:57.901 DEBUG --- [http-nio-9100-exec-5] c.p.e.m.CategoryMapper.findCg_id : ==> Parameters: 하의(String) 
+09:01:57.909 TRACE --- [http-nio-9100-exec-5] c.p.e.m.CategoryMapper.findCg_id : <==    Columns: cg_id 
+09:01:57.909 TRACE --- [http-nio-9100-exec-5] c.p.e.m.CategoryMapper.findCg_id : <==        Row: 20 
+09:01:57.910 DEBUG --- [http-nio-9100-exec-5] c.p.e.m.CategoryMapper.findCg_id : <==      Total: 1 
+09:01:57.911 DEBUG --- [http-nio-9100-exec-5] c.p.e.m.ProductMapper.lowCgData : ==>  Preparing: SELECT ta.p_id AS id, tb.p_name as name, sum(ta.od_count) AS order_count, tb.p_rank AS rank FROM order_detail ta JOIN (SELECT p_category, p_id, p_name, p_rank FROM product LEFT JOIN (SELECT cg_id as id FROM category WHERE cg_id LIKE CONCAT(?, '%')) ta ON 1=1 WHERE product.p_category= ta.id) tb ON ta.p_id = tb.p_id group by ta.p_id 
+09:01:57.912 DEBUG --- [http-nio-9100-exec-5] c.p.e.m.ProductMapper.lowCgData : ==> Parameters: 20(Integer) 
+09:01:57.920 TRACE --- [http-nio-9100-exec-5] c.p.e.m.ProductMapper.lowCgData : <==    Columns: id, name, order_count, rank 
+09:01:57.921 TRACE --- [http-nio-9100-exec-5] c.p.e.m.ProductMapper.lowCgData : <==        Row: 8, 검정 슬랙스, 3, null 
+09:01:57.922 TRACE --- [http-nio-9100-exec-5] c.p.e.m.ProductMapper.lowCgData : <==        Row: 11, 반바지2, 2, null 
+09:01:57.923 DEBUG --- [http-nio-9100-exec-5] c.p.e.m.ProductMapper.lowCgData : <==      Total: 2 
+09:02:12.045 DEBUG --- [http-nio-9100-exec-6] c.p.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT user_id as username, user_password as password, user_name as name, user_phone as phone, user_email as email, user_address as address, user_isAccountNonExpired as isAccountNonExpired, user_isAccountNonLocked as isAccountNonLocked, user_isCredentialNonExpired as isCredentialsNonExpired, user_isEnabled as isEnabled FROM user WHERE 1=1 AND user_id = ? 
+09:02:12.047 DEBUG --- [http-nio-9100-exec-6] c.p.e.mapper.UserMapper.readUser : ==> Parameters: c(String) 
+09:02:12.057 TRACE --- [http-nio-9100-exec-6] c.p.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, email, address, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+09:02:12.057 TRACE --- [http-nio-9100-exec-6] c.p.e.mapper.UserMapper.readUser : <==        Row: c, $2a$10$MFyFLUG1O7TunwTboC0JqOQR.jeam9T1SIaPN8R0oSP3o9GjSPAuW, 관리자, 010-1111-5555, c@naver.com, 청주, 1, 1, 1, 1 
+09:02:12.060 DEBUG --- [http-nio-9100-exec-6] c.p.e.mapper.UserMapper.readUser : <==      Total: 1 
+09:02:12.061 DEBUG --- [http-nio-9100-exec-6] c.p.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT user_auth FROM userauth WHERE 1=1 AND user_id = ? 
+09:02:12.064 DEBUG --- [http-nio-9100-exec-6] c.p.e.m.UserMapper.readAuthorities : ==> Parameters: c(String) 
+09:02:12.071 TRACE --- [http-nio-9100-exec-6] c.p.e.m.UserMapper.readAuthorities : <==    Columns: user_auth 
+09:02:12.072 TRACE --- [http-nio-9100-exec-6] c.p.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+09:02:12.072 DEBUG --- [http-nio-9100-exec-6] c.p.e.m.UserMapper.readAuthorities : <==      Total: 1 
+09:02:12.081 DEBUG --- [http-nio-9100-exec-6] c.p.e.m.CategoryMapper.findCg_id : ==>  Preparing: SELECT cg_id FROM category WHERE cg_name = ? 
+09:02:12.082 DEBUG --- [http-nio-9100-exec-6] c.p.e.m.CategoryMapper.findCg_id : ==> Parameters: 전체(String) 
+09:02:12.089 TRACE --- [http-nio-9100-exec-6] c.p.e.m.CategoryMapper.findCg_id : <==    Columns: cg_id 
+09:02:12.089 TRACE --- [http-nio-9100-exec-6] c.p.e.m.CategoryMapper.findCg_id : <==        Row: 0 
+09:02:12.090 DEBUG --- [http-nio-9100-exec-6] c.p.e.m.CategoryMapper.findCg_id : <==      Total: 1 
+09:02:12.091 DEBUG --- [http-nio-9100-exec-6] c.p.e.m.ProductMapper.lowCgData_all : ==>  Preparing: SELECT ta.p_id AS id, tb.p_name as name, sum(ta.od_count) AS order_count, tb.p_rank AS rank FROM order_detail ta LEFT JOIN product tb ON tb.p_id = ta.p_id group by ta.p_id 
+09:02:12.092 DEBUG --- [http-nio-9100-exec-6] c.p.e.m.ProductMapper.lowCgData_all : ==> Parameters:  
+09:02:12.101 TRACE --- [http-nio-9100-exec-6] c.p.e.m.ProductMapper.lowCgData_all : <==    Columns: id, name, order_count, rank 
+09:02:12.101 TRACE --- [http-nio-9100-exec-6] c.p.e.m.ProductMapper.lowCgData_all : <==        Row: 3, 반팔티셔츠, 1, null 
+09:02:12.102 TRACE --- [http-nio-9100-exec-6] c.p.e.m.ProductMapper.lowCgData_all : <==        Row: 5, 흰색 셔츠, 6, null 
+09:02:12.103 TRACE --- [http-nio-9100-exec-6] c.p.e.m.ProductMapper.lowCgData_all : <==        Row: 6, 회색 셔츠, 2, null 
+09:02:12.104 TRACE --- [http-nio-9100-exec-6] c.p.e.m.ProductMapper.lowCgData_all : <==        Row: 8, 검정 슬랙스, 3, null 
+09:02:12.104 TRACE --- [http-nio-9100-exec-6] c.p.e.m.ProductMapper.lowCgData_all : <==        Row: 11, 반바지2, 2, null 
+09:02:12.105 TRACE --- [http-nio-9100-exec-6] c.p.e.m.ProductMapper.lowCgData_all : <==        Row: 14, 페인팅 반팔티셔츠, 1, null 
+09:02:12.106 TRACE --- [http-nio-9100-exec-6] c.p.e.m.ProductMapper.lowCgData_all : <==        Row: 15, 해골무늬 반팔티셔츠, 2, null 
+09:02:12.106 TRACE --- [http-nio-9100-exec-6] c.p.e.m.ProductMapper.lowCgData_all : <==        Row: 17, 검정색 반팔티셔츠, 4, null 
+09:02:12.107 DEBUG --- [http-nio-9100-exec-6] c.p.e.m.ProductMapper.lowCgData_all : <==      Total: 8 
+09:02:13.478 DEBUG --- [http-nio-9100-exec-7] c.p.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT user_id as username, user_password as password, user_name as name, user_phone as phone, user_email as email, user_address as address, user_isAccountNonExpired as isAccountNonExpired, user_isAccountNonLocked as isAccountNonLocked, user_isCredentialNonExpired as isCredentialsNonExpired, user_isEnabled as isEnabled FROM user WHERE 1=1 AND user_id = ? 
+09:02:13.479 DEBUG --- [http-nio-9100-exec-7] c.p.e.mapper.UserMapper.readUser : ==> Parameters: c(String) 
+09:02:13.488 TRACE --- [http-nio-9100-exec-7] c.p.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, email, address, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+09:02:13.488 TRACE --- [http-nio-9100-exec-7] c.p.e.mapper.UserMapper.readUser : <==        Row: c, $2a$10$MFyFLUG1O7TunwTboC0JqOQR.jeam9T1SIaPN8R0oSP3o9GjSPAuW, 관리자, 010-1111-5555, c@naver.com, 청주, 1, 1, 1, 1 
+09:02:13.491 DEBUG --- [http-nio-9100-exec-7] c.p.e.mapper.UserMapper.readUser : <==      Total: 1 
+09:02:13.492 DEBUG --- [http-nio-9100-exec-7] c.p.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT user_auth FROM userauth WHERE 1=1 AND user_id = ? 
+09:02:13.493 DEBUG --- [http-nio-9100-exec-7] c.p.e.m.UserMapper.readAuthorities : ==> Parameters: c(String) 
+09:02:13.501 TRACE --- [http-nio-9100-exec-7] c.p.e.m.UserMapper.readAuthorities : <==    Columns: user_auth 
+09:02:13.502 TRACE --- [http-nio-9100-exec-7] c.p.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+09:02:13.502 DEBUG --- [http-nio-9100-exec-7] c.p.e.m.UserMapper.readAuthorities : <==      Total: 1 
+09:02:13.510 DEBUG --- [http-nio-9100-exec-7] c.p.e.m.CategoryMapper.findCg_id : ==>  Preparing: SELECT cg_id FROM category WHERE cg_name = ? 
+09:02:13.511 DEBUG --- [http-nio-9100-exec-7] c.p.e.m.CategoryMapper.findCg_id : ==> Parameters: 상의(String) 
+09:02:13.518 TRACE --- [http-nio-9100-exec-7] c.p.e.m.CategoryMapper.findCg_id : <==    Columns: cg_id 
+09:02:13.519 TRACE --- [http-nio-9100-exec-7] c.p.e.m.CategoryMapper.findCg_id : <==        Row: 10 
+09:02:13.519 DEBUG --- [http-nio-9100-exec-7] c.p.e.m.CategoryMapper.findCg_id : <==      Total: 1 
+09:02:13.522 DEBUG --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.lowCgData : ==>  Preparing: SELECT ta.p_id AS id, tb.p_name as name, sum(ta.od_count) AS order_count, tb.p_rank AS rank FROM order_detail ta JOIN (SELECT p_category, p_id, p_name, p_rank FROM product LEFT JOIN (SELECT cg_id as id FROM category WHERE cg_id LIKE CONCAT(?, '%')) ta ON 1=1 WHERE product.p_category= ta.id) tb ON ta.p_id = tb.p_id group by ta.p_id 
+09:02:13.522 DEBUG --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.lowCgData : ==> Parameters: 10(Integer) 
+09:02:13.532 TRACE --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.lowCgData : <==    Columns: id, name, order_count, rank 
+09:02:13.533 TRACE --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.lowCgData : <==        Row: 3, 반팔티셔츠, 1, null 
+09:02:13.534 TRACE --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.lowCgData : <==        Row: 5, 흰색 셔츠, 6, null 
+09:02:13.535 TRACE --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.lowCgData : <==        Row: 6, 회색 셔츠, 2, null 
+09:02:13.535 TRACE --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.lowCgData : <==        Row: 14, 페인팅 반팔티셔츠, 1, null 
+09:02:13.536 TRACE --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.lowCgData : <==        Row: 15, 해골무늬 반팔티셔츠, 2, null 
+09:02:13.537 TRACE --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.lowCgData : <==        Row: 17, 검정색 반팔티셔츠, 4, null 
+09:02:13.537 DEBUG --- [http-nio-9100-exec-7] c.p.e.m.ProductMapper.lowCgData : <==      Total: 6 
+09:02:27.315 DEBUG --- [http-nio-9100-exec-10] c.p.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT user_id as username, user_password as password, user_name as name, user_phone as phone, user_email as email, user_address as address, user_isAccountNonExpired as isAccountNonExpired, user_isAccountNonLocked as isAccountNonLocked, user_isCredentialNonExpired as isCredentialsNonExpired, user_isEnabled as isEnabled FROM user WHERE 1=1 AND user_id = ? 
+09:02:27.316 DEBUG --- [http-nio-9100-exec-10] c.p.e.mapper.UserMapper.readUser : ==> Parameters: c(String) 
+09:02:27.324 TRACE --- [http-nio-9100-exec-10] c.p.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, email, address, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+09:02:27.325 TRACE --- [http-nio-9100-exec-10] c.p.e.mapper.UserMapper.readUser : <==        Row: c, $2a$10$MFyFLUG1O7TunwTboC0JqOQR.jeam9T1SIaPN8R0oSP3o9GjSPAuW, 관리자, 010-1111-5555, c@naver.com, 청주, 1, 1, 1, 1 
+09:02:27.327 DEBUG --- [http-nio-9100-exec-10] c.p.e.mapper.UserMapper.readUser : <==      Total: 1 
+09:02:27.328 DEBUG --- [http-nio-9100-exec-10] c.p.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT user_auth FROM userauth WHERE 1=1 AND user_id = ? 
+09:02:27.329 DEBUG --- [http-nio-9100-exec-10] c.p.e.m.UserMapper.readAuthorities : ==> Parameters: c(String) 
+09:02:27.338 TRACE --- [http-nio-9100-exec-10] c.p.e.m.UserMapper.readAuthorities : <==    Columns: user_auth 
+09:02:27.339 TRACE --- [http-nio-9100-exec-10] c.p.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+09:02:27.339 DEBUG --- [http-nio-9100-exec-10] c.p.e.m.UserMapper.readAuthorities : <==      Total: 1 
+09:02:27.343 DEBUG --- [http-nio-9100-exec-10] c.p.e.m.P.readAllProduct : ==>  Preparing: SELECT product.p_id as id, p_name as name, p_price as price, ta.p_order_count as order_count, p_views as views, p_category as category, p_quantity as quantity, pi_unique as image, p_text as text FROM product JOIN product_img ON (product.p_id = product_img.p_id) left JOIN (SELECT SUM(od_count) p_order_count , p_id FROM order_detail GROUP BY p_id) ta ON product.p_id = ta.p_id 
+09:02:27.344 DEBUG --- [http-nio-9100-exec-10] c.p.e.m.P.readAllProduct : ==> Parameters:  
+09:02:27.357 TRACE --- [http-nio-9100-exec-10] c.p.e.m.P.readAllProduct : <==    Columns: id, name, price, order_count, views, category, quantity, image, text 
+09:02:27.358 TRACE --- [http-nio-9100-exec-10] c.p.e.m.P.readAllProduct : <==        Row: 2, 남색 긴팔티셔츠, 100, null, 3, 101020, 0, 3, <<BLOB>> 
+09:02:27.361 TRACE --- [http-nio-9100-exec-10] c.p.e.m.P.readAllProduct : <==        Row: 3, 반팔티셔츠, 100, 1, 1, 101010, 10, 2, <<BLOB>> 
+09:02:27.362 TRACE --- [http-nio-9100-exec-10] c.p.e.m.P.readAllProduct : <==        Row: 10, 반바지, 5000, null, 0, 2020, 12, 20210715_1047214, <<BLOB>> 
+09:02:27.363 TRACE --- [http-nio-9100-exec-10] c.p.e.m.P.readAllProduct : <==        Row: 11, 반바지2, 6000, 2, 0, 2020, 10, 20210715_1049258, <<BLOB>> 
+09:02:27.364 TRACE --- [http-nio-9100-exec-10] c.p.e.m.P.readAllProduct : <==        Row: 12, 청바지, 10000, null, 0, 2010, 30, 20210715_1053209, <<BLOB>> 
+09:02:27.365 TRACE --- [http-nio-9100-exec-10] c.p.e.m.P.readAllProduct : <==        Row: 4, 흰색긴팔티셔츠, 10000, null, 0, 101020, 0, 20210716_1034622, <<BLOB>> 
+09:02:27.366 TRACE --- [http-nio-9100-exec-10] c.p.e.m.P.readAllProduct : <==        Row: 5, 흰색 셔츠, 15000, 6, 0, 101021, 8, 20210716_1038392, <<BLOB>> 
+09:02:27.367 TRACE --- [http-nio-9100-exec-10] c.p.e.m.P.readAllProduct : <==        Row: 6, 회색 셔츠, 25000, 2, 0, 101021, 30, 20210716_1038513, <<BLOB>> 
+09:02:27.368 TRACE --- [http-nio-9100-exec-10] c.p.e.m.P.readAllProduct : <==        Row: 7, 흰청바지, 50000, null, 0, 2010, 13, 20210716_103900, <<BLOB>> 
+09:02:27.369 TRACE --- [http-nio-9100-exec-10] c.p.e.m.P.readAllProduct : <==        Row: 8, 검정 슬랙스, 30000, 3, 0, 2010, 16, 20210716_1041215, <<BLOB>> 
+09:02:27.370 TRACE --- [http-nio-9100-exec-10] c.p.e.m.P.readAllProduct : <==        Row: 9, 갈색 슬랙스, 45000, null, 0, 2010, 21, 20210716_1042423, <<BLOB>> 
+09:02:27.371 TRACE --- [http-nio-9100-exec-10] c.p.e.m.P.readAllProduct : <==        Row: 13, 국방색 면바지, 45000, null, 0, 2010, 13, 20210716_1042256, <<BLOB>> 
+09:02:27.372 TRACE --- [http-nio-9100-exec-10] c.p.e.m.P.readAllProduct : <==        Row: 14, 페인팅 반팔티셔츠, 20000, 1, 0, 101010, 13, 20210723_0930980, <<BLOB>> 
+09:02:27.373 TRACE --- [http-nio-9100-exec-10] c.p.e.m.P.readAllProduct : <==        Row: 15, 해골무늬 반팔티셔츠, 15000, 2, 0, 101010, 10, 20210723_0930534, <<BLOB>> 
+09:02:27.374 TRACE --- [http-nio-9100-exec-10] c.p.e.m.P.readAllProduct : <==        Row: 16, 기능성 반팔티셔츠, 25000, null, 0, 101010, 30, 20210723_0931614, <<BLOB>> 
+09:02:27.375 TRACE --- [http-nio-9100-exec-10] c.p.e.m.P.readAllProduct : <==        Row: 17, 검정색 반팔티셔츠, 10000, 4, 0, 101010, 2, 20210723_0932213, <<BLOB>> 
+09:02:27.382 TRACE --- [http-nio-9100-exec-10] c.p.e.m.P.readAllProduct : <==        Row: 18, 흰색 긴팔티셔츠, 30000, null, 0, 101020, 10, 20210723_0933694, <<BLOB>> 
+09:02:27.383 TRACE --- [http-nio-9100-exec-10] c.p.e.m.P.readAllProduct : <==        Row: 19, 긴팔셔츠, 25000, null, 0, 101020, 10, 20210723_0934988, <<BLOB>> 
+09:02:27.384 TRACE --- [http-nio-9100-exec-10] c.p.e.m.P.readAllProduct : <==        Row: 20, 삼선무늬 긴팔티셔츠, 30000, null, 0, 101020, 10, 20210723_0935917, <<BLOB>> 
+09:02:27.385 TRACE --- [http-nio-9100-exec-10] c.p.e.m.P.readAllProduct : <==        Row: 21, 흰색긴팔셔츠2, 30000, null, 0, 101020, 10, 20210723_0935781, <<BLOB>> 
+09:02:27.386 DEBUG --- [http-nio-9100-exec-10] c.p.e.m.P.readAllProduct : <==      Total: 20 
+09:02:30.500 DEBUG --- [http-nio-9100-exec-2] c.p.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT user_id as username, user_password as password, user_name as name, user_phone as phone, user_email as email, user_address as address, user_isAccountNonExpired as isAccountNonExpired, user_isAccountNonLocked as isAccountNonLocked, user_isCredentialNonExpired as isCredentialsNonExpired, user_isEnabled as isEnabled FROM user WHERE 1=1 AND user_id = ? 
+09:02:30.501 DEBUG --- [http-nio-9100-exec-2] c.p.e.mapper.UserMapper.readUser : ==> Parameters: c(String) 
+09:02:30.503 DEBUG --- [http-nio-9100-exec-9] c.p.e.mapper.UserMapper.readUser : ==>  Preparing: SELECT user_id as username, user_password as password, user_name as name, user_phone as phone, user_email as email, user_address as address, user_isAccountNonExpired as isAccountNonExpired, user_isAccountNonLocked as isAccountNonLocked, user_isCredentialNonExpired as isCredentialsNonExpired, user_isEnabled as isEnabled FROM user WHERE 1=1 AND user_id = ? 
+09:02:30.504 DEBUG --- [http-nio-9100-exec-9] c.p.e.mapper.UserMapper.readUser : ==> Parameters: c(String) 
+09:02:30.510 TRACE --- [http-nio-9100-exec-2] c.p.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, email, address, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+09:02:30.510 TRACE --- [http-nio-9100-exec-2] c.p.e.mapper.UserMapper.readUser : <==        Row: c, $2a$10$MFyFLUG1O7TunwTboC0JqOQR.jeam9T1SIaPN8R0oSP3o9GjSPAuW, 관리자, 010-1111-5555, c@naver.com, 청주, 1, 1, 1, 1 
+09:02:30.513 DEBUG --- [http-nio-9100-exec-2] c.p.e.mapper.UserMapper.readUser : <==      Total: 1 
+09:02:30.514 DEBUG --- [http-nio-9100-exec-2] c.p.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT user_auth FROM userauth WHERE 1=1 AND user_id = ? 
+09:02:30.515 TRACE --- [http-nio-9100-exec-9] c.p.e.mapper.UserMapper.readUser : <==    Columns: username, password, name, phone, email, address, isAccountNonExpired, isAccountNonLocked, isCredentialsNonExpired, isEnabled 
+09:02:30.515 DEBUG --- [http-nio-9100-exec-2] c.p.e.m.UserMapper.readAuthorities : ==> Parameters: c(String) 
+09:02:30.515 TRACE --- [http-nio-9100-exec-9] c.p.e.mapper.UserMapper.readUser : <==        Row: c, $2a$10$MFyFLUG1O7TunwTboC0JqOQR.jeam9T1SIaPN8R0oSP3o9GjSPAuW, 관리자, 010-1111-5555, c@naver.com, 청주, 1, 1, 1, 1 
+09:02:30.518 DEBUG --- [http-nio-9100-exec-9] c.p.e.mapper.UserMapper.readUser : <==      Total: 1 
+09:02:30.519 DEBUG --- [http-nio-9100-exec-9] c.p.e.m.UserMapper.readAuthorities : ==>  Preparing: SELECT user_auth FROM userauth WHERE 1=1 AND user_id = ? 
+09:02:30.520 DEBUG --- [http-nio-9100-exec-9] c.p.e.m.UserMapper.readAuthorities : ==> Parameters: c(String) 
+09:02:30.523 TRACE --- [http-nio-9100-exec-2] c.p.e.m.UserMapper.readAuthorities : <==    Columns: user_auth 
+09:02:30.523 TRACE --- [http-nio-9100-exec-2] c.p.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+09:02:30.524 DEBUG --- [http-nio-9100-exec-2] c.p.e.m.UserMapper.readAuthorities : <==      Total: 1 
+09:02:30.527 DEBUG --- [http-nio-9100-exec-2] c.p.e.m.ProductMapper.lowCgData_all : ==>  Preparing: SELECT ta.p_id AS id, tb.p_name as name, sum(ta.od_count) AS order_count, tb.p_rank AS rank FROM order_detail ta LEFT JOIN product tb ON tb.p_id = ta.p_id group by ta.p_id 
+09:02:30.528 DEBUG --- [http-nio-9100-exec-2] c.p.e.m.ProductMapper.lowCgData_all : ==> Parameters:  
+09:02:30.530 TRACE --- [http-nio-9100-exec-9] c.p.e.m.UserMapper.readAuthorities : <==    Columns: user_auth 
+09:02:30.531 TRACE --- [http-nio-9100-exec-9] c.p.e.m.UserMapper.readAuthorities : <==        Row: ROLE_ADMIN 
+09:02:30.531 DEBUG --- [http-nio-9100-exec-9] c.p.e.m.UserMapper.readAuthorities : <==      Total: 1 
+09:02:30.535 TRACE --- [http-nio-9100-exec-2] c.p.e.m.ProductMapper.lowCgData_all : <==    Columns: id, name, order_count, rank 
+09:02:30.536 TRACE --- [http-nio-9100-exec-2] c.p.e.m.ProductMapper.lowCgData_all : <==        Row: 3, 반팔티셔츠, 1, null 
+09:02:30.538 TRACE --- [http-nio-9100-exec-2] c.p.e.m.ProductMapper.lowCgData_all : <==        Row: 5, 흰색 셔츠, 6, null 
+09:02:30.539 TRACE --- [http-nio-9100-exec-2] c.p.e.m.ProductMapper.lowCgData_all : <==        Row: 6, 회색 셔츠, 2, null 
+09:02:30.540 TRACE --- [http-nio-9100-exec-2] c.p.e.m.ProductMapper.lowCgData_all : <==        Row: 8, 검정 슬랙스, 3, null 
+09:02:30.541 TRACE --- [http-nio-9100-exec-2] c.p.e.m.ProductMapper.lowCgData_all : <==        Row: 11, 반바지2, 2, null 
+09:02:30.541 TRACE --- [http-nio-9100-exec-2] c.p.e.m.ProductMapper.lowCgData_all : <==        Row: 14, 페인팅 반팔티셔츠, 1, null 
+09:02:30.542 TRACE --- [http-nio-9100-exec-2] c.p.e.m.ProductMapper.lowCgData_all : <==        Row: 15, 해골무늬 반팔티셔츠, 2, null 
+09:02:30.543 TRACE --- [http-nio-9100-exec-2] c.p.e.m.ProductMapper.lowCgData_all : <==        Row: 17, 검정색 반팔티셔츠, 4, null 
+09:02:30.543 DEBUG --- [http-nio-9100-exec-2] c.p.e.m.ProductMapper.lowCgData_all : <==      Total: 8 
+09:02:35.008 DEBUG --- [http-nio-9100-exec-9] c.p.e.m.C.readCategory_name : ==>  Preparing: SELECT cg_name as name FROM category WHERE CHAR_LENGTH(cg_id) <= 2 
+09:02:35.013 DEBUG --- [http-nio-9100-exec-9] c.p.e.m.C.readCategory_name : ==> Parameters:  
+09:02:35.030 TRACE --- [http-nio-9100-exec-9] c.p.e.m.C.readCategory_name : <==    Columns: name 
+09:02:35.033 TRACE --- [http-nio-9100-exec-9] c.p.e.m.C.readCategory_name : <==        Row: 전체 
+09:02:35.039 TRACE --- [http-nio-9100-exec-9] c.p.e.m.C.readCategory_name : <==        Row: 상의 
+09:02:35.043 TRACE --- [http-nio-9100-exec-9] c.p.e.m.C.readCategory_name : <==        Row: 하의 
+09:02:35.047 DEBUG --- [http-nio-9100-exec-9] c.p.e.m.C.readCategory_name : <==      Total: 3 

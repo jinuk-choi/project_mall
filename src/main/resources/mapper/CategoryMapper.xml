@@ -13,7 +13,7 @@
 	<!-- 카테고리명만 불러오기 -->
 	<select id="readCategory_name" parameterType="String" resultType="Category">
 		SELECT			cg_name 							as 	name
-		FROM			category						 	WHERE  CHAR_LENGTH(cg_id) &lt;= 2   
+		FROM			category						 	WHERE  CHAR_LENGTH(cg_id) &lt;= 2    <!-- &lt 부등호(<) -->
 	</select>
 	
 	<!-- 분류명을 통해 분류명에 해당하는 id를 찾기 -->
